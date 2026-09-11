@@ -1,0 +1,48 @@
+/* --------------------------------------------------------------------------
+   5. MARQUEE TICKER STRIP
+   -------------------------------------------------------------------------- */
+.ticker {
+  background: linear-gradient(90deg, #071914 0%, #0B241D 50%, #071914 100%);
+  border-top: none;
+  border-bottom: none;
+  padding: 0.85rem 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+.ticker-track {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  white-space: nowrap;
+  animation: scroll-left 32s linear infinite;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.ticker-item {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ticker-icon {
+  color: var(--gold-bright);
+  font-size: 0.7rem;
+}
+

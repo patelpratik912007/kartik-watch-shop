@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sell your luxury watch at Kartik Watch Shop Mehsana. Get a free valuation for Seiko, Citizen, Tissot, Hamilton, Casio, and more.">
+  <title>Sell Your Watch — Kartik Watch Shop Mehsana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/cart.js" defer></script>
+  <script src="js/shared-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- Banner -->
+  <section class="page-hero-banner">
+    <div class="container">
+      <span class="section-subtitle rolex-subtitle">💰 SELL YOUR WATCH</span>
+      <h1 class="page-hero-title">Get the Best Price<br><em>for Your Timepiece</em></h1>
+      <p class="page-hero-desc">Kartik Watch Shop offers expert appraisals and competitive prices for pre-owned luxury watches in Mehsana, Gujarat.</p>
+    </div>
+  </section>
+
+  <!-- Why Sell With Us -->
+  <section class="sell-why-section">
+    <div class="container">
+      <div class="sell-why-grid">
+        <div class="sell-why-card">
+          <span class="sell-why-icon">💎</span>
+          <h3>Expert Valuation</h3>
+          <p>Our certified horologists provide accurate, market-rate appraisals for all luxury brands.</p>
+        </div>
+        <div class="sell-why-card">
+          <span class="sell-why-icon">⚡</span>
+          <h3>Instant Payment</h3>
+          <p>Receive payment on the same day at our Mehsana boutique. Bank transfer or cash, your choice.</p>
+        </div>
+        <div class="sell-why-card">
+          <span class="sell-why-icon">🔒</span>
+          <h3>Safe &amp; Secure</h3>
+          <p>All transactions are documented with official receipts and certificates for your peace of mind.</p>
+        </div>
+        <div class="sell-why-card">
+          <span class="sell-why-icon">🏆</span>
+          <h3>Best Price Guarantee</h3>
+          <p>We match or beat any competitor's offer. We buy Seiko, Citizen, Tissot, Hamilton, and all luxury brands.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sell Form -->
+  <section class="sell-form-section" id="sell-form">
+    <div class="container">
+      <div class="sell-form-layout">
+
+        <!-- Form -->
+        <div class="sell-form-box">
+          <div class="section-header u-text-left u-mb-lg">
+            <span class="section-subtitle">SUBMIT YOUR WATCH</span>
+            <h2 class="section-title">Free Valuation <em>Request</em></h2>
+          </div>
+
+          <form id="sellForm" class="sell-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="sellerName">Your Name *</label>
+                <input type="text" id="sellerName" name="sellerName" placeholder="Full name" required>
+              </div>
+              <div class="form-group">
+                <label for="sellerPhone">Phone Number *</label>
+                <input type="tel" id="sellerPhone" name="sellerPhone" placeholder="+91 98250 XXXXX" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sellerEmail">Email Address</label>
+              <input type="email" id="sellerEmail" name="sellerEmail" placeholder="your@email.com">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="watchBrand">Watch Brand *</label>
+                <select id="watchBrand" required>
+                  <option value="">Select Brand</option>
+                  <option>Seiko</option>
+                  <option>Citizen</option>
+                  <option>Tissot</option>
+                  <option>Casio &amp; G-Shock</option>
+                  <option>Hamilton</option>
+                  <option>Tag Heuer</option>
+                  <option>Longines</option>
+                  <option>Omega</option>
+                  <option>Rolex</option>
+                  <option>Rado</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="watchModel">Model / Reference</label>
+                <input type="text" id="watchModel" placeholder="e.g., Seiko Prospex Speedtimer / Tissot PRX">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="watchCondition">Condition *</label>
+                <select id="watchCondition" required>
+                  <option value="">Select Condition</option>
+                  <option>Mint / Unworn</option>
+                  <option>Excellent — Minor wear</option>
+                  <option>Good — Normal wear</option>
+                  <option>Fair — Visible scratches</option>
+                  <option>Poor — Needs service</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="watchYear">Year of Purchase</label>
+                <input type="number" id="watchYear" placeholder="e.g., 2018" min="1950" max="2026">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Included Accessories</label>
+              <div class="checkbox-row">
+                <label class="checkbox-label"><input type="checkbox" name="accessories" value="box"> Original Box</label>
+                <label class="checkbox-label"><input type="checkbox" name="accessories" value="papers"> Papers / Certificate</label>
+                <label class="checkbox-label"><input type="checkbox" name="accessories" value="receipt"> Purchase Receipt</label>
+                <label class="checkbox-label"><input type="checkbox" name="accessories" value="extra-strap"> Extra Strap</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="expectedPrice">Expected Price (₹)</label>
+              <input type="number" id="expectedPrice" placeholder="Your asking price in ₹">
+            </div>
+            <div class="form-group">
+              <label for="watchDescription">Additional Details</label>
+              <textarea id="watchDescription" rows="4" placeholder="Any special features, service history, or notes about your timepiece..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block sell-submit-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              Submit for Free Valuation
+            </button>
+          </form>
+
+          <div id="sellSuccess" class="sell-success-msg"></div>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="sell-info-panel">
+          <div class="sell-info-card">
+            <h3>Brands We Buy</h3>
+            <ul class="sell-brands-list">
+              <li><span class="brand-dot brand-dot-emerald"></span> Seiko</li>
+              <li><span class="brand-dot brand-dot-emerald"></span> Citizen</li>
+              <li><span class="brand-dot brand-dot-emerald"></span> Tissot</li>
+              <li><span class="brand-dot brand-dot-emerald"></span> Casio &amp; G-Shock</li>
+              <li><span class="brand-dot brand-dot-emerald"></span> Hamilton</li>
+              <li><span class="brand-dot"></span> Longines</li>
+              <li><span class="brand-dot"></span> Tag Heuer</li>
+              <li><span class="brand-dot"></span> Omega</li>
+              <li><span class="brand-dot"></span> Rolex</li>
+              <li><span class="brand-dot"></span> Rado</li>
+              <li><span class="brand-dot"></span> And many more...</li>
+            </ul>
+          </div>
+          <div class="sell-info-card">
+            <h3>How It Works</h3>
+            <ol class="sell-steps">
+              <li><span class="step-num">1</span> Submit this form with your watch details</li>
+              <li><span class="step-num">2</span> Our appraiser contacts you within 24 hours</li>
+              <li><span class="step-num">3</span> Bring your watch to our Mehsana store</li>
+              <li><span class="step-num">4</span> Get paid instantly — same day!</li>
+            </ol>
+          </div>
+          <div class="sell-info-card sell-contact-card">
+            <h3>Quick Contact</h3>
+            <p><strong>📞</strong> +91 98250 12345</p>
+            <p><strong>📧</strong> mehsana@kartikwatchshop.com</p>
+            <p><strong>📍</strong> Radhanpur Road, Mehsana</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom u-pt-lg">
+        <p>&copy; <span id="year"></span> Kartik Watch Shop Mehsana. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yr = document.getElementById('year');
+      if (yr) yr.textContent = new Date().getFullYear();
+
+      document.getElementById('sellForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('sellerName').value.trim();
+        const phone = document.getElementById('sellerPhone').value.trim();
+        const email = document.getElementById('sellerEmail') ? document.getElementById('sellerEmail').value.trim() : '';
+        const brand = document.getElementById('watchBrand').value;
+        const model = document.getElementById('watchModel') ? document.getElementById('watchModel').value.trim() : '';
+        const condition = document.getElementById('watchCondition').value;
+        const year = document.getElementById('watchYear') ? document.getElementById('watchYear').value : '';
+        const price = document.getElementById('expectedPrice') ? document.getElementById('expectedPrice').value : '';
+        const notes = document.getElementById('watchDescription') ? document.getElementById('watchDescription').value.trim() : '';
+
+        const accessories = Array.from(document.querySelectorAll('input[name="accessories"]:checked')).map(cb => cb.value);
+
+        if (!name || !phone || !brand || !condition) {
+          alert('Please fill in all required fields (Name, Phone, Brand, Condition).');
+          return;
+        }
+
+        let refNumber = 'KWS-VAL-' + Math.floor(100000 + Math.random() * 900000);
+
+        try {
+          const res = await fetch('/api/sell', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              client_name: name,
+              client_phone: phone,
+              client_email: email,
+              watch_brand: brand,
+              model_name: model,
+              condition_state: condition,
+              purchase_year: year,
+              has_box: accessories.includes('box'),
+              has_papers: accessories.includes('papers'),
+              has_receipt: accessories.includes('receipt'),
+              has_extra_strap: accessories.includes('extra-strap'),
+              expected_price: price,
+              notes: notes
+            })
+          });
+          const data = await res.json();
+          if (data && data.success && data.reference_no) {
+            refNumber = data.reference_no;
+          }
+        } catch (err) {
+          console.log('Database sync notice (offline / file protocol fallback):', err);
+        }
+
+        const successContainer = document.getElementById('sellSuccess');
+        successContainer.innerHTML = `
+          <div class="success-icon">✓</div>
+          <h3>Valuation Request Submitted!</h3>
+          <p class="sell-ref-highlight">REFERENCE: ${refNumber}</p>
+          <p>Our expert horology appraisers will inspect your <strong>${brand} ${model ? model : ''}</strong> details and contact you at <strong>${phone}</strong> within 24 hours.</p>
+          <a href="collections.html" class="btn btn-secondary u-mt-md">Browse Our Collection</a>
+        `;
+
+        document.getElementById('sellForm').classList.add('is-hidden');
+        successContainer.classList.remove('is-hidden');
+        successContainer.style.display = 'block';
+        successContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+  </script>
+</body>
+</html>

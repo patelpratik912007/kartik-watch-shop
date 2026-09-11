@@ -1,0 +1,59 @@
+/* ==========================================================================
+   KARTIK WATCH SHOP MEHSANA — MASTER STYLESHEET (Entry Point)
+   Aesthetic: Contemporary Swiss & Japanese Luxury Horology
+   Color Palette: Deep Obsidian, Polished Champagne Gold, Platinum Ivory, Velvet Emerald
+
+   ARCHITECTURE — Modular CSS (css/modules/)
+   Each module is self-contained. Load order matters: tokens first, then base,
+   then components, then responsive last.
+   ========================================================================== */
+
+/* ── 01 · Design Tokens (CSS Custom Properties) ── */
+@import url('./modules/01_tokens.css');
+
+/* ── 02 · Reset & Base (Typography, Buttons, Utilities) ── */
+@import url('./modules/02_base.css');
+
+/* ── 03 · Navigation (Sticky Header, Hamburger) ── */
+@import url('./modules/03_navigation.css');
+
+/* ── 04 · Hero Section & Analog Clock Widget ── */
+@import url('./modules/04_hero.css');
+
+/* ── 05 · Ticker / Marquee Strip (legacy, hidden) ── */
+@import url('./modules/05_ticker.css');
+
+/* ── 06 · Sort & Filter Control Panel ── */
+@import url('./modules/06_filters.css');
+
+/* ── 07 · Collections Grid & Product Cards ── */
+@import url('./modules/07_collections.css');
+
+
+/* ── 09 · Watch Spec Sheet ── */
+@import url('./modules/09_spec_sheet.css');
+
+/* ── 10 · Testimonials & Visit / Map ── */
+@import url('./modules/10_testimonials_visit.css');
+
+/* ── 11 · Footer ── */
+@import url('./modules/11_footer.css');
+
+/* ── 12 · Responsive Breakpoints (Original) ── */
+@import url('./modules/12_responsive_legacy.css');
+
+/* ── 13 · Auth / Concierge Portal ── */
+@import url('./modules/13_auth.css');
+
+/* ── 14 · Icon Navigation (Multi-page Tooltips) ── */
+@import url('./modules/14_icon_nav.css');
+
+/* ── 15 · New Components (Product, Cart, Sell, Services, Responsive System) ── */
+@import url('./modules/15_new_components.css');
+
+/* ── 16 · White / Light Theme Overrides (loaded last) ── */
+@import url('./modules/16_light_theme.css');
+@import url('./modules/17_responsive_upgrade.css');
+
+/* ── 18 · Payment Checkout, Service Booking & Google Auth ── */
+@import url('./modules/18_payment.css');

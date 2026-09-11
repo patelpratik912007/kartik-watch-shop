@@ -1,0 +1,337 @@
+/* --------------------------------------------------------------------------
+   4. HERO SECTION & LIVE ANALOG CLOCK
+   -------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 5rem 0;
+  overflow: hidden;
+  background-color: var(--ink);
+}
+
+.hero-backdrop-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('../../assets/hero/boutique_hero.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  filter: brightness(0.85) contrast(1.1);
+  transform: scale(1.02);
+  transition: transform 10s ease-out;
+}
+
+.hero:hover .hero-backdrop-image {
+  transform: scale(1.05);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 65% 50%, rgba(14, 42, 34, 0.4) 0%, rgba(10, 13, 19, 0.88) 65%, #0A0D13 100%);
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 1rem;
+  background-color: rgba(197, 160, 89, 0.14);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--gold-bright);
+  margin-bottom: 1.75rem;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gold-bright);
+  box-shadow: 0 0 8px var(--gold-bright);
+  animation: pulse-glow 2.5s infinite ease-in-out;
+  transform: translateZ(0);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.animated-float {
+  animation: float-slow 7s ease-in-out infinite;
+  transform: translateZ(0);
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-title {
+  font-size: 3.8rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.25rem;
+  line-height: 1.12;
+}
+
+.hero-subcopy {
+  font-size: 1.12rem;
+  color: var(--steel);
+  max-width: 560px;
+  margin-bottom: 2.25rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1.15rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  color: var(--gold-bright);
+  display: block;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--steel);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* Luxury Clock Widget */
+.hero-clock-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.clock-case {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  max-width: 100%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 180deg,
+    #9E7939 0deg,
+    #DFBA73 60deg,
+    #F3E0B5 120deg,
+    #C5A059 180deg,
+    #7A5822 240deg,
+    #DFBA73 300deg,
+    #9E7939 360deg
+  );
+  padding: 14px;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(197, 160, 89, 0.25),
+    inset 0 2px 4px rgba(255, 255, 255, 0.4);
+}
+
+.clock-bezel {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+.clock-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1F3864 0%, #162544 60%, #0B1324 100%);
+  border: 2px solid rgba(223, 186, 115, 0.4);
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.clock-ticks-mask {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    var(--gold-bright) 0deg 0.6deg,
+    transparent 0.6deg 6deg
+  );
+  -webkit-mask: radial-gradient(circle at 50% 50%, transparent 64%, black 65%);
+  mask: radial-gradient(circle at 50% 50%, transparent 64%, black 65%);
+  opacity: 0.75;
+}
+
+.clock-numbers {
+  position: absolute;
+  inset: 16px;
+  pointer-events: none;
+}
+
+.num {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold-bright);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.num-12 { top: 6px; left: 50%; transform: translateX(-50%); }
+.num-3  { right: 8px; top: 50%; transform: translateY(-50%); }
+.num-6  { bottom: 6px; left: 50%; transform: translateX(-50%); }
+.num-9  { left: 8px; top: 50%; transform: translateY(-50%); }
+
+.clock-brand {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.clock-brand-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.26em;
+  color: var(--ivory);
+  font-weight: 700;
+}
+
+.clock-brand-sub {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.22em;
+  color: var(--gold-bright);
+  margin-top: 2px;
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: 50% 100%;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  will-change: transform;
+}
+
+.hour-hand {
+  width: 6px;
+  height: 28%;
+  margin-left: -3px;
+  background: var(--gold-gradient);
+  z-index: 10;
+}
+
+.minute-hand {
+  width: 4px;
+  height: 38%;
+  margin-left: -2px;
+  background: linear-gradient(to top, var(--ivory), #FFFFFF);
+  z-index: 20;
+}
+
+.second-hand {
+  width: 2px;
+  height: 44%;
+  margin-left: -1px;
+  background: #E63946;
+  z-index: 30;
+}
+
+.second-hand::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: -2px;
+  width: 6px;
+  height: 14px;
+  background: #E63946;
+  border-radius: 3px;
+}
+
+.clock-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #FFFFFF 0%, var(--gold-bright) 50%, var(--gold-dark) 100%);
+  border: 2px solid var(--ink);
+  z-index: 40;
+}
+
+.clock-glass-reflection {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
+  pointer-events: none;
+}
+
+.clock-status {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--gold-bright);
+  background-color: rgba(17, 21, 31, 0.9);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--line-strong);
+}
+
+.live-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2ECC71;
+  box-shadow: 0 0 8px #2ECC71;
+}
+

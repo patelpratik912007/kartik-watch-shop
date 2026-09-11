@@ -1,0 +1,107 @@
+/* ==========================================================================
+   KARTIK WATCH SHOP MEHSANA — HAUTE HOROLOGY BOUTIQUE STYLESHEET
+   Aesthetic: Contemporary Swiss & Japanese Luxury Horology
+   Color Palette: Light Ivory & White Surfaces, Polished Champagne Gold, Charcoal Ink Text, Velvet Emerald
+   Optimized for: High-Performance, Low-Spec CPUs, No-GPU Devices, & Full Responsiveness
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (LUXURY HOROLOGY DESIGN TOKENS)
+   -------------------------------------------------------------------------- */
+:root {
+  /* --------------------------------------------------------------------------
+     THE QUIET LUXURY COLOR PALETTE
+     - CREAM: Timeless & versatile soft elegant foundation
+     - MUTED GOLD: Warm & refined subtle richness and glow
+     - NAVY: Strong & sophisticated depth, balance and trust
+     - LIGHT GREY: Understated & neutral clarity and modern calm
+     -------------------------------------------------------------------------- */
+
+  /* 1. CREAM — Foundation Surfaces */
+  --cream: #FAF6F0;
+  --cream-light: #FDFBF7;
+  --cream-card: #FFFFFF;
+  --cream-tint: #F5EFEB;
+  --cream-border: #E8E2D8;
+
+  --ink: #FAF6F0;
+  --ink-soft: #F5EFEB;
+  --ink-card: #FFFFFF;
+  --ink-elevated: #FDFBF7;
+  --ink-highlight: #EDE5D8;
+
+  /* 2. NAVY — Depth, Balance & Confidence */
+  --navy: #162544;
+  --navy-deep: #0F1A2E;
+  --navy-dark: #0A1220;
+  --navy-soft: #23375E;
+  --navy-light: #2D4472;
+  --navy-glow: rgba(22, 37, 68, 0.22);
+  --navy-gradient: linear-gradient(135deg, #1B2D52 0%, #162544 55%, #0F1A2E 100%);
+
+  /* Legacy brand aliases re-mapped to Quiet Luxury Navy */
+  --accent-emerald: #162544;
+  --accent-emerald-light: #23375E;
+  --accent-emerald-deep: #0F1A2E;
+  --accent-emerald-dark: #0A1220;
+  --accent-emerald-glow: rgba(22, 37, 68, 0.22);
+
+  --rolex-green: #162544;
+  --rolex-green-light: #23375E;
+  --rolex-green-deep: #0F1A2E;
+  --rolex-green-dark: #0A1220;
+  --rolex-green-glow: rgba(22, 37, 68, 0.22);
+
+  /* 3. MUTED GOLD — Warmth, Elegance & Glow */
+  --gold: #C5A059;
+  --gold-bright: #AF863D;
+  --gold-light: #F2E5CE;
+  --gold-dark: #8A6828;
+  --gold-glow: rgba(197, 160, 89, 0.28);
+  --gold-gradient: linear-gradient(135deg, #E2C384 0%, #C5A059 45%, #9E7934 100%);
+  --gold-border: linear-gradient(135deg, rgba(197, 160, 89, 0.6) 0%, rgba(175, 134, 61, 0.25) 100%);
+
+  --rolex-gold: #C5A059;
+  --rolex-gold-bright: #AF863D;
+  --rolex-gold-gradient: linear-gradient(135deg, #E2C384 0%, #C5A059 45%, #9E7934 100%);
+
+  /* 4. LIGHT GREY — Clarity, Neutral Calm & Harmony */
+  --grey: #D8DCE3;
+  --grey-light: #ECEEF2;
+  --grey-dark: #9CA3AF;
+  --velvet: #F4F6F9;
+  --velvet-deep: #E8ECF2;
+  --sapphire-deep: #E8EDF5;
+
+  /* Typography Colors (Quiet Luxury Navy & Slate) */
+  --ivory: #162544;
+  --ivory-soft: #2E3E5C;
+  --steel: #5A6982;
+  --steel-dark: #37445A;
+
+  /* Borders & Dividers */
+  --line: rgba(22, 37, 68, 0.09);
+  --line-strong: rgba(197, 160, 89, 0.4);
+  --line-glow: rgba(197, 160, 89, 0.55);
+
+  /* Typography Fonts */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+  /* Spacing & Radii */
+  --container-max: 1280px;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions & Hardware Optimization Shadows */
+  --transition-fast: 0.18s ease;
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-gold: 0 10px 26px rgba(197, 160, 89, 0.2);
+  --shadow-dark: 0 14px 36px rgba(22, 37, 68, 0.12);
+  --shadow-subtle: 0 6px 18px rgba(22, 37, 68, 0.07);
+}
+

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your shopping cart at Kartik Watch Shop Mehsana. Review your selected timepieces and checkout.">
+  <title>My Cart — Kartik Watch Shop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/cart.js" defer></script>
+  <script src="js/shared-nav.js" defer></script>
+</head>
+<body>
+
+  <!-- Banner -->
+  <section class="page-hero-banner page-hero-compact">
+    <div class="container">
+      <span class="section-subtitle rolex-subtitle">🛒 SHOPPING CART</span>
+      <h1 class="page-hero-title">Your Selected <em>Timepieces</em></h1>
+    </div>
+  </section>
+
+  <!-- Cart Layout -->
+  <section class="cart-section">
+    <div class="container">
+      <div class="cart-layout" id="cartLayout">
+        <!-- Filled by JS -->
+      </div>
+      <div class="cart-empty" id="cartEmpty">
+        <div class="cart-empty-icon">🛒</div>
+        <h2>Your cart is empty</h2>
+        <p>Explore our curated collection of 31 luxury timepieces.</p>
+        <a href="collections.html" class="btn btn-primary u-mt-md">Browse Collection</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom u-pt-lg">
+        <p>&copy; <span id="year"></span> Kartik Watch Shop Mehsana. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/watches-data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yr = document.getElementById('year');
+      if (yr) yr.textContent = new Date().getFullYear();
+
+      renderCart();
+
+      window.addEventListener('kartikCartUpdated', renderCart);
+    });
+
+    function renderCart() {
+      const cart = KartikCart.getCart();
+      const layout = document.getElementById('cartLayout');
+      const emptyEl = document.getElementById('cartEmpty');
+
+      if (!cart.length) {
+        layout.innerHTML = '';
+        emptyEl.style.display = 'flex';
+        return;
+      }
+
+      emptyEl.style.display = 'none';
+      const total = KartikCart.getTotal();
+
+      layout.innerHTML = `
+        <div class="cart-items-col">
+          <div class="cart-items-header">
+            <h2 class="font-display">Cart (${KartikCart.getCount()} item${KartikCart.getCount() !== 1 ? 's' : ''})</h2>
+          </div>
+          ${cart.map(item => `
+            <div class="cart-item" data-id="${item.id}">
+              <a href="product.html?id=${item.id}" class="cart-item-img-link">
+                <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+              </a>
+              <div class="cart-item-info">
+                <div class="cart-item-badge">${item.badge}</div>
+                <a href="product.html?id=${item.id}" class="cart-item-name">${item.name}</a>
+                <p class="cart-item-specs">${item.specs}</p>
+                <div class="cart-item-stock">✓ In Stock — Free Delivery</div>
+                <div class="cart-item-actions">
+                  <div class="cart-qty-row">
+                    <label>Qty:</label>
+                    <div class="qty-controls">
+                      <button onclick="changeQty(${item.id}, -1)">−</button>
+                      <span class="qty-display">${item.qty}</span>
+                      <button onclick="changeQty(${item.id}, 1)">+</button>
+                    </div>
+                  </div>
+                  <button class="cart-remove-btn" onclick="removeItem(${item.id})">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+                    Remove
+                  </button>
+                </div>
+              </div>
+              <div class="cart-item-price">
+                <span class="cart-item-unit-price">₹${item.price.toLocaleString('en-IN')}</span>
+                ${item.qty > 1 ? `<span class="cart-item-total-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</span>` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="cart-summary-col">
+          <div class="cart-summary-box">
+            <h3 class="cart-summary-title">Order Summary</h3>
+            <div class="cart-summary-rows">
+              ${cart.map(item => `
+                <div class="summary-row">
+                  <span>${item.name} × ${item.qty}</span>
+                  <span>₹${(item.price * item.qty).toLocaleString('en-IN')}</span>
+                </div>
+              `).join('')}
+              <div class="summary-divider"></div>
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span>₹${total.toLocaleString('en-IN')}</span>
+              </div>
+              <div class="summary-row summary-green">
+                <span>Delivery</span>
+                <span>FREE</span>
+              </div>
+              <div class="summary-row">
+                <span>GST (Included)</span>
+                <span>Inclusive</span>
+              </div>
+              <div class="summary-divider"></div>
+              <div class="summary-row summary-total">
+                <span>Total</span>
+                <span>₹${total.toLocaleString('en-IN')}</span>
+              </div>
+            </div>
+
+            <button class="btn btn-primary btn-block checkout-btn" onclick="proceedCheckout()">
+              ⚡ Proceed to Checkout
+            </button>
+            <a href="collections.html" class="btn btn-secondary btn-block u-mt-xs u-text-center">
+              Continue Shopping
+            </a>
+
+            <div class="cart-assurances">
+              <div class="assurance-item"><span>🔒</span><span>Secure Checkout</span></div>
+              <div class="assurance-item"><span>🚚</span><span>Free Delivery</span></div>
+              <div class="assurance-item"><span>↩️</span><span>7-Day Returns</span></div>
+            </div>
+          </div>
+
+          <div class="cart-store-pickup">
+            <div class="store-pickup-icon">🏪</div>
+            <div>
+              <strong>Store Pickup Available</strong>
+              <p>Pick up from Kartik Watch Shop, Radhanpur Road, Mehsana — Free, Same Day</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function changeQty(id, delta) {
+      const cart = KartikCart.getCart();
+      const item = cart.find(i => i.id === id);
+      if (!item) return;
+      const newQty = item.qty + delta;
+      if (newQty < 1) {
+        if (confirm(`Remove "${item.name}" from cart?`)) KartikCart.removeItem(id);
+      } else {
+        KartikCart.updateQty(id, newQty);
+      }
+      renderCart();
+    }
+
+    function removeItem(id) {
+      KartikCart.removeItem(id);
+      renderCart();
+    }
+
+    function proceedCheckout() {
+      const cart = KartikCart.getCart();
+      if (!cart.length) {
+        alert('Your shopping cart is empty.');
+        return;
+      }
+      window.location.href = 'payment.html?type=cart';
+    }
+  </script>
+</body>
+</html>

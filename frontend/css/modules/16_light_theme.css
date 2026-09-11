@@ -1,0 +1,283 @@
+/* ============================================================================
+   16. THE QUIET LUXURY PALETTE OVERRIDES
+   Loaded LAST so it wins the cascade over every earlier module.
+
+   Palette:
+   - CREAM: #FAF6F0 (Timeless foundation, soft and versatile)
+   - MUTED GOLD: #C5A059 / #AF863D (Warm and refined subtle richness and glow)
+   - NAVY: #162544 / #0F1A2E (Strong and sophisticated depth, balance and trust)
+   - LIGHT GREY: #D8DCE3 / #ECEEF2 (Understated and neutral clarity and calm)
+   ============================================================================ */
+
+/* ── Base body: Warm, elegant Quiet Luxury Cream foundation ── */
+html {
+  background-color: #FAF6F0;
+  color: #162544;
+}
+
+body {
+  background-color: #FAF6F0;
+  background-image: none;
+  color: #162544;
+}
+
+/* ── Typography & Headings in Navy ── */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.hero-title,
+.page-hero-title,
+.brand-title {
+  color: #162544;
+}
+
+.hero-subcopy,
+.page-hero-desc,
+.stat-label {
+  color: #55647C;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+  background: var(--navy-gradient);
+  color: #F5EAE0 !important;
+  border: 1px solid rgba(197, 160, 89, 0.45);
+  box-shadow: 0 4px 16px rgba(22, 37, 68, 0.18);
+}
+
+.btn-primary:hover, .btn-primary:focus-visible {
+  background: linear-gradient(135deg, #23375E 0%, #1A2B4C 100%);
+  color: #FFFFFF !important;
+  border-color: var(--gold-bright);
+  box-shadow: 0 8px 24px rgba(22, 37, 68, 0.25), 0 0 16px rgba(197, 160, 89, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #162544;
+  border: 1px solid rgba(197, 160, 89, 0.4);
+}
+
+@supports (backdrop-filter: blur(8px)) {
+  .btn-secondary {
+    background-color: rgba(253, 251, 247, 0.85);
+  }
+}
+
+.btn-secondary:hover, .btn-secondary:focus-visible {
+  background-color: #FAF6F0;
+  border-color: var(--gold-bright);
+  color: var(--gold-bright);
+}
+
+/* ── Navigation header (Cream Glass) ── */
+.nav {
+  background-color: rgba(250, 246, 240, 0.96);
+  border-bottom: none;
+  box-shadow: 0 1px 8px rgba(22, 37, 68, 0.04);
+}
+
+@supports (backdrop-filter: blur(16px)) {
+  .nav {
+    background-color: rgba(250, 246, 240, 0.88);
+  }
+}
+
+/* ── Hero overlay (Cream glass gradient over boutique image) ── */
+.hero-overlay {
+  background: radial-gradient(circle at 65% 50%, rgba(250, 246, 240, 0.25) 0%, rgba(250, 246, 240, 0.82) 65%, #FAF6F0 100%);
+}
+
+/* Live clock status pill */
+.clock-status {
+  background-color: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  color: #162544;
+}
+
+/* ── Ticker / marquee strip ── */
+.ticker {
+  background: linear-gradient(90deg, #F3ECE2 0%, #FAF6F0 50%, #F3ECE2 100%);
+  border-top: none;
+  border-bottom: none;
+}
+
+/* ── Filter control panel ── */
+@supports (backdrop-filter: blur(12px)) {
+  .filter-control-panel {
+    background-color: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(22, 37, 68, 0.08);
+    box-shadow: 0 4px 18px rgba(22, 37, 68, 0.04);
+  }
+}
+
+.brand-chip {
+  background: #FFFFFF;
+  border: 1px solid rgba(22, 37, 68, 0.12);
+  color: #162544;
+}
+
+.brand-chip:hover {
+  border-color: rgba(197, 160, 89, 0.6);
+  background-color: #FAF6F0;
+  color: #162544;
+}
+
+.brand-chip.active {
+  background: var(--navy-gradient);
+  color: #F5EAE0;
+  border-color: var(--navy);
+  box-shadow: 0 2px 10px rgba(22, 37, 68, 0.18);
+}
+
+.brand-chip .chip-count {
+  background: rgba(22, 37, 68, 0.08);
+  color: #162544;
+}
+
+.brand-chip.active .chip-count {
+  background: rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+
+.filter-tab {
+  background: #FFFFFF;
+  border: 1px solid var(--grey);
+  color: #162544;
+}
+
+.filter-tab.active {
+  background: var(--navy-gradient);
+  color: #F5EAE0;
+  border-color: var(--navy);
+}
+
+.gender-filter-tabs {
+  border-bottom: none !important;
+}
+
+.category-header {
+  display: none !important;
+  border-bottom: none !important;
+}
+
+.page-hero-banner {
+  border-bottom: none !important;
+}
+
+.btn-reset {
+  background: #FFFFFF;
+  border: 1px solid var(--grey);
+  color: #162544;
+}
+
+/* ── Collections grid & product cards ── */
+.collection-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(22, 37, 68, 0.08);
+  box-shadow: 0 4px 16px rgba(22, 37, 68, 0.06);
+}
+
+.collection-card:hover {
+  border-color: rgba(197, 160, 89, 0.5);
+  box-shadow: 0 16px 36px rgba(22, 37, 68, 0.12), 0 0 24px rgba(197, 160, 89, 0.18);
+}
+
+.card-image-wrap {
+  background-color: #F7F5F0;
+}
+
+.card-pedestal-light {
+  background: radial-gradient(circle at 50% 50%, rgba(197, 160, 89, 0.12) 0%, rgba(241, 243, 246, 0.95) 75%);
+}
+
+.card-badge {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: var(--gold-bright);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.card-rating-badge {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+/* ── Testimonials & visit/map ── */
+.info-icon {
+  box-shadow: 0 4px 10px rgba(22, 37, 68, 0.1);
+  color: var(--gold-bright);
+}
+
+.map-placeholder {
+  background-color: #EDE8DF;
+}
+
+/* ── Footer ── */
+.footer {
+  background-color: #FDFBF7;
+  border-top: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+/* ── Auth / concierge portal ── */
+.auth-ambient-glow {
+  background:
+    radial-gradient(circle at 20% 30%, rgba(197, 160, 89, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(22, 37, 68, 0.08) 0%, transparent 60%);
+}
+
+.auth-header {
+  background-color: rgba(250, 246, 240, 0.92);
+  border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+.demo-auth-box {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.auth-toast.toast-success {
+  background-color: rgba(238, 247, 241, 0.97);
+  color: #162544;
+}
+
+.auth-toast.toast-error {
+  background-color: rgba(253, 237, 238, 0.97);
+  color: #991B1B;
+}
+
+.auth-toast.toast-info {
+  background-color: rgba(240, 244, 250, 0.97);
+  color: #162544;
+}
+
+/* ── Purchase and Cart Buttons in Quiet Luxury Navy & Gold ── */
+.btn-buy-now,
+.btn-product-buy {
+  background: var(--navy-gradient) !important;
+  color: #F5EAE0 !important;
+  border: 1px solid rgba(197, 160, 89, 0.45) !important;
+}
+
+.btn-buy-now:hover,
+.btn-product-buy:hover {
+  background: linear-gradient(135deg, #23375E 0%, #1A2B4C 100%) !important;
+  color: #FFFFFF !important;
+  border-color: var(--gold-bright) !important;
+}
+
+.success-icon,
+.step-num {
+  color: var(--gold-bright);
+}
+
+.nav-icon-menu .btn-nav {
+  background: var(--navy-gradient) !important;
+  color: #F5EAE0 !important;
+  border: 1px solid rgba(197, 160, 89, 0.4) !important;
+}
+
+.nav-icon-menu .btn-nav:hover {
+  background: linear-gradient(135deg, #23375E 0%, #1A2B4C 100%) !important;
+  color: #FFFFFF !important;
+  border-color: var(--gold-bright) !important;
+}

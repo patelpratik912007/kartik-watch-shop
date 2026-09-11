@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: kartik-watch-shop
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python backend/setup_db.py && gunicorn --chdir backend app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: FLASK_DEBUG
+        value: "false"
+      - key: DB_TYPE
+        value: sqlite
+      - key: SECRET_KEY
+        generateValue: true

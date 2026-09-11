@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse all 31 luxury watches at Kartik Watch Shop Mehsana. Filter by brand, gender, price. Seiko, Citizen, Tissot, Casio &amp; G-Shock, and Hamilton.">
+  <title>Collections — Kartik Watch Shop Mehsana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/cart.js"></script>
+  <script src="js/shared-nav.js"></script>
+</head>
+<body>
+
+  <!-- Page Hero Banner (Compact & Clean) -->
+  <section class="page-hero-banner page-hero-compact">
+    <div class="container">
+      <span class="section-subtitle rolex-subtitle">⚜ 31 AUTHENTIC TIMEPIECES</span>
+      <h1 class="page-hero-title">The Watch <em>Collection</em></h1>
+      <p class="page-hero-desc">Explore Swiss &amp; Japanese references &bull; Seiko, Citizen, Tissot, Casio &amp; G-Shock, Hamilton &bull; Mehsana Boutique</p>
+    </div>
+  </section>
+
+  <!-- Collections Section (Amazon-Style Straight Catalog) -->
+  <section class="collections collections-straight-page" id="collections">
+    <div class="container">
+
+      <!-- Control Panel -->
+      <div class="filter-control-panel amz-filter-panel">
+        <!-- Amazon-style Brand Quick Filter Chips -->
+        <div class="brand-filter-chips" role="tablist" aria-label="Filter by Brand">
+          <button class="brand-chip active" data-brand="all" role="tab">All Brands <span class="chip-count">31</span></button>
+          <button class="brand-chip" data-brand="seiko" role="tab">Seiko <span class="chip-count">5</span></button>
+          <button class="brand-chip" data-brand="citizen" role="tab">Citizen <span class="chip-count">5</span></button>
+          <button class="brand-chip" data-brand="tissot" role="tab">Tissot <span class="chip-count">6</span></button>
+          <button class="brand-chip" data-brand="casio" role="tab">Casio &amp; G-Shock <span class="chip-count">10</span></button>
+          <button class="brand-chip" data-brand="hamilton" role="tab">Hamilton <span class="chip-count">5</span></button>
+        </div>
+
+        <div class="gender-filter-tabs" role="tablist" aria-label="Filter by Gender">
+          <button class="filter-tab active" data-gender="all" role="tab">All Watches</button>
+          <button class="filter-tab" data-gender="male" role="tab">&#9794; Men's Collection</button>
+          <button class="filter-tab" data-gender="female" role="tab">&#9792; Women's Collection</button>
+        </div>
+
+        <div class="filter-options-grid">
+          <div class="filter-group">
+            <label for="brandFilter" class="filter-label">Brand:</label>
+            <select id="brandFilter" class="filter-select">
+              <option value="all">All Brands (31)</option>
+              <option value="seiko">Seiko (5)</option>
+              <option value="citizen">Citizen (5)</option>
+              <option value="tissot">Tissot (6)</option>
+              <option value="casio">Casio & G-Shock (10)</option>
+              <option value="hamilton">Hamilton (5)</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="sortFilter" class="filter-label">Sort By:</label>
+            <select id="sortFilter" class="filter-select">
+              <option value="featured">Featured / Default</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated (&#9733; 5.0)</option>
+            </select>
+          </div>
+          <div class="filter-group search-group">
+            <input type="text" id="searchFilter" class="filter-input" placeholder="Search brand, model, dial..." aria-label="Search Timepieces">
+          </div>
+          <button id="resetFilters" class="btn-reset" title="Reset All Filters">Reset</button>
+        </div>
+        <div class="filter-counter">
+          Showing <span id="activeCount">31</span> of 31 timepieces &bull; In Stock
+        </div>
+      </div>
+
+      <!-- Dynamic Collection Sections -->
+      <div id="dynamicCollections"></div>
+
+      <!-- Empty State -->
+      <div id="noResults" class="no-results-box">
+        <h3>No matching timepieces found</h3>
+        <p>Try resetting your filters or searching for another brand.</p>
+        <button id="emptyStateReset" class="btn btn-secondary">Reset All Filters</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interconnected Cross-Link Strip -->
+  <section class="interconnect-strip">
+    <div class="container">
+      <div class="interconnect-grid">
+        <div class="interconnect-card">
+          <div class="interconnect-icon">🏛️</div>
+          <h4 class="interconnect-title">Boutique Experience</h4>
+          <p class="interconnect-desc">Experience our 31 curated luxury timepieces in person at our Mehsana showroom.</p>
+          <a href="services.html#contact" class="btn btn-secondary interconnect-btn">Visit Showroom &rarr;</a>
+        </div>
+        <div class="interconnect-card">
+          <div class="interconnect-icon">🛠️</div>
+          <h4 class="interconnect-title">Horology Services</h4>
+          <p class="interconnect-desc">Swiss COSC movement calibration, pressure testing, and battery servicing in Mehsana.</p>
+          <a href="services.html" class="btn btn-secondary interconnect-btn">View Atelier Services &rarr;</a>
+        </div>
+        <div class="interconnect-card">
+          <div class="interconnect-icon">💰</div>
+          <h4 class="interconnect-title">Trade-In Your Watch</h4>
+          <p class="interconnect-desc">Get competitive cash or exchange credit towards any watch in our 31-piece collection.</p>
+          <a href="sell.html" class="btn btn-secondary interconnect-btn">Sell / Value Watch &rarr;</a>
+        </div>
+        <div class="interconnect-card">
+          <div class="interconnect-icon">👑</div>
+          <h4 class="interconnect-title">VIP Concierge Access</h4>
+          <p class="interconnect-desc">Access private vault pieces, express repair booking, and member-only pricing.</p>
+          <a href="auth.html" class="btn btn-secondary interconnect-btn">VIP Sign In &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer (Universal Quiet Luxury injected by shared-nav.js) -->
+  <footer class="footer"></footer>
+
+  <script src="js/watches-data.js" defer></script>
+  <script src="js/watch-renderer.js" defer></script>
+  <script src="js/filter.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Pre-select brand from URL param
+      const urlParams = new URLSearchParams(window.location.search);
+      const brand = urlParams.get('brand');
+      if (brand) {
+        const brandSel = document.getElementById('brandFilter');
+        if (brandSel) {
+          brandSel.value = brand;
+          brandSel.dispatchEvent(new Event('change'));
+        }
+      }
+    });
+  </script>
+</body>
+</html>

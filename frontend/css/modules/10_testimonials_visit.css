@@ -1,0 +1,173 @@
+﻿/* --------------------------------------------------------------------------
+   10. TESTIMONIALS & VISIT SECTIONS
+   -------------------------------------------------------------------------- */
+.testimonials {
+  padding: 6rem 0;
+  background-color: var(--ink-soft);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background-color: var(--ink-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-bright);
+  box-shadow: var(--shadow-gold);
+}
+
+.stars {
+  color: var(--gold-bright);
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.review-text {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ivory);
+  margin-bottom: 1.75rem;
+}
+
+.reviewer {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.reviewer-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: #0A0D13;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--ivory);
+}
+
+.reviewer-meta {
+  font-size: 0.76rem;
+  color: var(--steel);
+}
+
+/* Visit & Map */
+.visit {
+  padding: 6rem 0;
+  background-color: var(--ink);
+}
+
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.visit-lead {
+  font-size: 1.1rem;
+  color: var(--steel);
+  margin-bottom: 2.25rem;
+  line-height: 1.6;
+}
+
+.info-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.info-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: var(--ink-card);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-bright);
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+.info-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+  color: var(--gold-bright);
+}
+
+.info-text {
+  font-size: 0.92rem;
+  color: var(--steel);
+  line-height: 1.5;
+}
+
+.visit-map-container {
+  height: 100%;
+}
+
+.map-card {
+  background-color: var(--ink-card);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  height: 420px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-dark);
+}
+
+.map-placeholder {
+  flex-grow: 1;
+  width: 100%;
+  background-color: #10141D;
+}
+
+.map-caption {
+  padding: 0.9rem 1.25rem;
+  background-color: var(--ink-card);
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--steel);
+  text-align: center;
+}
+

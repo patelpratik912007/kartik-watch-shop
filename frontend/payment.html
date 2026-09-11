@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure Payment & Atelier Checkout at Kartik Watch Shop Mehsana. Fast UPI, Credit Card, Net Banking, and Store Pay.">
+  <title>Secure Checkout &amp; Payment — Kartik Watch Shop Mehsana</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Cart & Shared Nav -->
+  <script src="js/cart.js" defer></script>
+  <script src="js/shared-nav.js" defer></script>
+  <script src="js/auth.js" defer></script>
+</head>
+<body class="payment-body">
+
+  <!-- Hero Banner -->
+  <section class="page-hero-banner payment-hero-banner">
+    <div class="container">
+      <span class="section-subtitle rolex-subtitle">⚜ SECURE CHECKOUT</span>
+      <h1 class="page-hero-title payment-hero-title">Haute Horology <em>Payment</em></h1>
+      <p class="page-hero-desc">256-Bit SSL encrypted atelier booking and timepiece transaction gateway &bull; Mehsana, Gujarat.</p>
+    </div>
+  </section>
+
+  <!-- Main Payment Section -->
+  <main class="payment-page-section">
+    <div class="container">
+      <div class="payment-layout-grid">
+        
+        <!-- Left Column: Checkout Details & Payment Methods -->
+        <div class="payment-left-col">
+          
+          <!-- Client Details Box -->
+          <div class="payment-box u-mb-lg">
+            <h2 class="payment-section-heading">
+              <span>👤</span> <span>Client &amp; Contact Details</span>
+            </h2>
+            <p class="payment-section-sub">Order confirmation and Atelier work status updates will be sent here.</p>
+
+            <form id="clientDetailsForm">
+              <div class="payment-form-row">
+                <div class="form-group">
+                  <label for="payClientName" class="payment-form-label">Full Name *</label>
+                  <input type="text" id="payClientName" class="payment-form-input" placeholder="e.g. Kartik Patel" required>
+                </div>
+                <div class="form-group">
+                  <label for="payClientPhone" class="payment-form-label">Mobile (for WhatsApp/SMS updates) *</label>
+                  <input type="tel" id="payClientPhone" class="payment-form-input" placeholder="98250 12345" required>
+                </div>
+              </div>
+
+              <div class="payment-form-row">
+                <div class="form-group">
+                  <label for="payClientEmail" class="payment-form-label">Email Address</label>
+                  <input type="email" id="payClientEmail" class="payment-form-input" placeholder="name@domain.com">
+                </div>
+                <div class="form-group">
+                  <label for="payCity" class="payment-form-label">City / Location</label>
+                  <input type="text" id="payCity" class="payment-form-input" value="Mehsana, Gujarat">
+                </div>
+              </div>
+
+              <div class="form-group" id="shippingAddressGroup">
+                <label for="payAddress" class="payment-form-label">Delivery / Service Address</label>
+                <input type="text" id="payAddress" class="payment-form-input" placeholder="House/Flat No., Street, Landmark" value="Radhanpur Road, Mehsana">
+              </div>
+            </form>
+          </div>
+
+          <!-- Payment Methods Box -->
+          <div class="payment-box">
+            <h2 class="payment-section-heading">
+              <span>💳</span> <span>Select Payment Method</span>
+            </h2>
+            <p class="payment-section-sub">Choose your preferred payment mode. All transactions are securely protected.</p>
+
+            <!-- Tabs -->
+            <div class="payment-method-tabs" role="tablist">
+              <button type="button" class="payment-tab-btn is-active" id="tabUpi" role="tab" aria-selected="true" data-target="panelUpi">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>UPI / QR</span>
+              </button>
+              <button type="button" class="payment-tab-btn" id="tabCard" role="tab" aria-selected="false" data-target="panelCard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                <span>Cards</span>
+              </button>
+              <button type="button" class="payment-tab-btn" id="tabNetbanking" role="tab" aria-selected="false" data-target="panelNetbanking">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 22 7 12 2"/><rect x="4" y="10" width="3" height="7"/><rect x="10.5" y="10" width="3" height="7"/><rect x="17" y="10" width="3" height="7"/><line x1="2" y1="21" x2="22" y2="21"/></svg>
+                <span>Net Banking</span>
+              </button>
+              <button type="button" class="payment-tab-btn" id="tabStore" role="tab" aria-selected="false" data-target="panelStore">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Store Pay</span>
+              </button>
+                      <!-- Panel 1: UPI & QR Code -->
+            <div class="payment-tab-content is-active" id="panelUpi">
+              <div class="upi-checkout-container">
+                <div class="upi-apps-row">
+                  <div class="upi-app-badge">
+                    <span class="upi-app-gpay-g">G</span><span class="upi-app-gpay-p">P</span><span class="upi-app-gpay-a">a</span><span class="upi-app-gpay-y">y</span>
+                  </div>
+                  <div class="upi-app-badge upi-app-phonepe">PhonePe</div>
+                  <div class="upi-app-badge upi-app-paytm">Paytm</div>
+                  <div class="upi-app-badge upi-app-bhim">BHIM UPI</div>
+                </div>
+
+                <div class="upi-qr-wrapper">
+                  <!-- Clean Scalable Custom Vector QR Code with Gold Watch Inset -->
+                  <svg class="upi-qr-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="200" height="200" fill="#FFFFFF"/>
+                    <!-- Corner Top Left -->
+                    <rect x="20" y="20" width="45" height="45" fill="#162544" rx="4"/>
+                    <rect x="28" y="28" width="29" height="29" fill="#FFFFFF"/>
+                    <rect x="34" y="34" width="17" height="17" fill="#162544"/>
+                    <!-- Corner Top Right -->
+                    <rect x="135" y="20" width="45" height="45" fill="#162544" rx="4"/>
+                    <rect x="143" y="28" width="29" height="29" fill="#FFFFFF"/>
+                    <rect x="149" y="34" width="17" height="17" fill="#162544"/>
+                    <!-- Corner Bottom Left -->
+                    <rect x="20" y="135" width="45" height="45" fill="#162544" rx="4"/>
+                    <rect x="28" y="143" width="29" height="29" fill="#FFFFFF"/>
+                    <rect x="34" y="149" width="17" height="17" fill="#162544"/>
+                    <!-- Pattern Elements -->
+                    <rect x="75" y="22" width="12" height="12" fill="#162544"/>
+                    <rect x="95" y="22" width="12" height="24" fill="#162544"/>
+                    <rect x="115" y="22" width="12" height="12" fill="#162544"/>
+                    <rect x="75" y="42" width="12" height="12" fill="#162544"/>
+                    <rect x="115" y="42" width="12" height="24" fill="#162544"/>
+                    <rect x="22" y="75" width="12" height="24" fill="#162544"/>
+                    <rect x="42" y="75" width="24" height="12" fill="#162544"/>
+                    <rect x="22" y="105" width="12" height="12" fill="#162544"/>
+                    <rect x="42" y="105" width="12" height="18" fill="#162544"/>
+                    <!-- Center Watch Emblem -->
+                    <rect x="78" y="78" width="44" height="44" fill="#162544" rx="8"/>
+                    <circle cx="100" cy="100" r="16" fill="#FAF6F0" stroke="#C5A059" stroke-width="2"/>
+                    <line x1="100" y1="100" x2="100" y2="92" stroke="#162544" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="100" y1="100" x2="100" y2="106" stroke="#C5A059" stroke-width="2" stroke-linecap="round"/>
+                    <!-- Bottom Right Data Blocks -->
+                    <rect x="135" y="75" width="12" height="24" fill="#162544"/>
+                    <rect x="155" y="75" width="24" height="12" fill="#162544"/>
+                    <rect x="135" y="105" width="24" height="12" fill="#162544"/>
+                    <rect x="168" y="98" width="12" height="24" fill="#162544"/>
+                    <rect x="75" y="135" width="24" height="12" fill="#162544"/>
+                    <rect x="105" y="135" width="12" height="24" fill="#162544"/>
+                    <rect x="75" y="155" width="12" height="24" fill="#162544"/>
+                    <rect x="95" y="165" width="24" height="12" fill="#162544"/>
+                    <rect x="135" y="135" width="18" height="18" fill="#162544"/>
+                    <rect x="160" y="145" width="20" height="12" fill="#162544"/>
+                    <rect x="140" y="165" width="38" height="14" fill="#162544"/>
+                  </svg>
+                </div>
+
+                <div class="upi-id-badge">
+                  <span id="merchantUpiId">kartikwatches@okhdfcbank</span>
+                  <button type="button" class="btn-copy-upi" id="btnCopyUpi">Copy UPI ID</button>
+                </div>
+
+                <p class="upi-scan-desc">
+                  Scan this QR code with any UPI app (Google Pay, PhonePe, Paytm, BHIM) to complete your payment instantly.
+                </p>
+              </div>
+            </div>
+
+            <!-- Panel 2: Credit / Debit Card -->
+            <div class="payment-tab-content" id="panelCard">
+              <!-- Live Card Preview -->
+              <div class="card-preview-widget" id="cardWidget">
+                <div class="card-preview-top">
+                  <div class="card-chip"></div>
+                  <div class="card-network-logo" id="cardNetworkLabel">HAUTE CARTE</div>
+                </div>
+                <div class="card-preview-number" id="previewCardNumber">•••• •••• •••• 4242</div>
+                <div class="card-preview-bottom">
+                  <div>
+                    <span class="card-preview-label">Cardholder</span>
+                    <span class="card-holder-name" id="previewCardName">KARTIK PATEL</span>
+                  </div>
+                  <div class="card-preview-right">
+                    <span class="card-preview-label">Expires</span>
+                    <span class="card-expiry-val" id="previewCardExpiry">12/28</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card Inputs -->
+              <div class="form-group u-mb-sm">
+                <label for="cardNumberInput" class="form-label payment-form-label">Card Number</label>
+                <input type="text" id="cardNumberInput" class="form-input payment-form-input payment-form-input-mono" placeholder="4532 •••• •••• 4242" maxlength="19">
+              </div>
+
+              <div class="card-inputs-grid">
+                <div class="form-group">
+                  <label for="cardHolderInput" class="form-label payment-form-label">Name on Card</label>
+                  <input type="text" id="cardHolderInput" class="form-input payment-form-input" placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                  <label for="cardExpiryInput" class="form-label payment-form-label">Expiry</label>
+                  <input type="text" id="cardExpiryInput" class="form-input payment-form-input payment-form-input-mono" placeholder="MM/YY" maxlength="5">
+                </div>
+                <div class="form-group">
+                  <label for="cardCvvInput" class="form-label payment-form-label">CVV</label>
+                  <input type="password" id="cardCvvInput" class="form-input payment-form-input payment-form-input-mono" placeholder="•••" maxlength="4">
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel 3: Net Banking -->
+            <div class="payment-tab-content" id="panelNetbanking">
+              <label class="form-label netbanking-label">Popular Indian Banks</label>
+              <div class="netbanking-grid">
+                <button type="button" class="bank-tile-btn is-selected" data-bank="HDFC Bank">HDFC Bank</button>
+                <button type="button" class="bank-tile-btn" data-bank="State Bank of India">SBI</button>
+                <button type="button" class="bank-tile-btn" data-bank="ICICI Bank">ICICI Bank</button>
+                <button type="button" class="bank-tile-btn" data-bank="Axis Bank">Axis Bank</button>
+                <button type="button" class="bank-tile-btn" data-bank="Kotak Mahindra">Kotak</button>
+                <button type="button" class="bank-tile-btn" data-bank="Bank of Baroda">BOB</button>
+              </div>
+
+              <div class="form-group u-mb-sm">
+                <label for="otherBanksSelect" class="form-label payment-form-label">Or Select Other Bank</label>
+                <select id="otherBanksSelect" class="form-input payment-form-input">
+                  <option value="">Choose your bank (50+ Supported)</option>
+                  <option value="Punjab National Bank">Punjab National Bank</option>
+                  <option value="Canara Bank">Canara Bank</option>
+                  <option value="Union Bank of India">Union Bank of India</option>
+                  <option value="IndusInd Bank">IndusInd Bank</option>
+                  <option value="IDFC FIRST Bank">IDFC FIRST Bank</option>
+                  <option value="Federal Bank">Federal Bank</option>
+                  <option value="Yes Bank">Yes Bank</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Panel 4: Store Pay -->
+            <div class="payment-tab-content" id="panelStore">
+              <div class="boutique-pay-box">
+                <h4>🏪 Pay upon Mehsana Atelier Visit</h4>
+                <p>
+                  Confirm your appointment or timepiece order now. You can inspect your timepiece and settle via Cash, Card swipe, or UPI upon visiting our boutique:
+                </p>
+                <div class="boutique-address-box">
+                  📍 Shop No. 12, Highway City Complex, Radhanpur Road, Mehsana, Gujarat 384002
+                </div>
+              </div>
+            </div>
+
+            <!-- Primary Submit Button -->
+            <div class="u-mt-lg">
+              <button type="button" id="btnCompletePayment" class="btn btn-primary btn-block btn-pay-complete">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span id="btnPayAmountText">Authorize &amp; Pay ₹1,500</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Order / Booking Summary -->
+        <div class="payment-right-col">
+          <div class="payment-summary-card">
+            <h3 class="summary-card-title" id="summaryHeaderTitle">Order Summary</h3>
+
+            <div id="orderItemsContainer">
+              <!-- Dynamically populated via JS -->
+            </div>
+
+            <div class="summary-calc-rows">
+              <div class="summary-calc-line">
+                <span>Service / Item Subtotal</span>
+                <span id="summarySubtotal">₹1,500</span>
+              </div>
+              <div class="summary-calc-line">
+                <span>Mehsana Courier / Walk-in Delivery</span>
+                <span class="delivery-free-badge">FREE</span>
+              </div>
+              <div class="summary-calc-line">
+                <span>GST (18% Inclusive)</span>
+                <span>Included</span>
+              </div>
+              <div class="summary-calc-line total-highlight">
+                <span>Total Amount</span>
+                <span id="summaryGrandTotal">₹1,500</span>
+              </div>
+            </div>
+
+            <div class="trust-badges-list">
+              <div class="trust-badge-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>256-Bit Bank Grade SSL Encrypted</span>
+              </div>
+              <div class="trust-badge-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>2-Year Comprehensive Atelier Guarantee</span>
+              </div>
+              <div class="trust-badge-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span>Verified Mehsana Physical Boutique • Est. 1998</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Processing State Overlay -->
+  <div class="payment-processing-modal" id="paymentProcessingModal">
+    <div class="processing-spinner-box">
+      <div class="horology-spinner"></div>
+      <h3 class="processing-title">Securing Transaction</h3>
+      <p class="processing-step" id="processingStepText">Connecting to Indian Banking Network...</p>
+    </div>
+  </div>
+
+  <!-- Success Receipt Modal -->
+  <div class="receipt-modal" id="receiptModal">
+    <div class="receipt-card">
+      <div class="receipt-header">
+        <div class="receipt-success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <span class="receipt-brand-badge">KARTIK WATCH SHOP MEHSANA</span>
+        <h3 class="receipt-title">Payment &amp; Booking Confirmed!</h3>
+        <p class="receipt-order-id" id="receiptOrderNumber">WORK ORDER: KWS-SRV-2026-8942</p>
+      </div>
+
+      <div class="receipt-details-list">
+        <div class="receipt-row">
+          <span>Date &amp; Time</span>
+          <span id="receiptDate" class="receipt-val-bold">Sep 8, 2026 • 11:45 AM</span>
+        </div>
+        <div class="receipt-row">
+          <span>Client Name</span>
+          <span id="receiptClientName" class="receipt-val-bold">Kartik Patel</span>
+        </div>
+        <div class="receipt-row">
+          <span>Payment Method</span>
+          <span id="receiptPaymentMode" class="receipt-val-verified">UPI (Verified)</span>
+        </div>
+        <div class="receipt-row">
+          <span id="receiptItemLabel">Service Item</span>
+          <span id="receiptItemTitle" class="receipt-val-bold">Mechanical Calibration</span>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Amount Settled</span>
+          <span id="receiptTotalAmount" class="receipt-val-amount">₹1,500</span>
+        </div>
+      </div>
+
+      <div class="receipt-store-note">
+        📍 <strong>Mehsana Boutique:</strong> Shop No. 12, Highway City Complex, Radhanpur Road. An official WhatsApp &amp; SMS confirmation has been triggered to your phone number.
+      </div>
+
+      <div class="receipt-actions">
+        <button type="button" class="btn btn-secondary" id="btnPrintReceipt">
+          🖨️ Print Invoice
+        </button>
+        <a href="index.html" class="btn btn-primary btn-return-boutique">
+          Return to Boutique &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer"></footer>
+
+  <!-- Page Logic Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Determine checkout context: ?type=service OR ?type=cart
+      const params = new URLSearchParams(window.location.search);
+      const checkoutType = params.get('type') || 'service';
+      const bookingId = params.get('bookingId');
+
+      let currentTotal = 0;
+      let orderTitle = '';
+      let orderSubtitle = '';
+      let serviceBookingData = null;
+
+      // Check if user is signed in
+      const session = (function() {
+        try { return JSON.parse(localStorage.getItem('kartik_session')); } catch(e) { return null; }
+      })();
+
+      if (session) {
+        const nameInput = document.getElementById('payClientName');
+        const phoneInput = document.getElementById('payClientPhone');
+        const emailInput = document.getElementById('payClientEmail');
+        if (nameInput && session.name) nameInput.value = session.name;
+        if (phoneInput && session.phone) phoneInput.value = session.phone;
+        if (emailInput && session.email) emailInput.value = session.email;
+      }
+
+      // 2. Render Order Summary
+      const container = document.getElementById('orderItemsContainer');
+      const headerTitle = document.getElementById('summaryHeaderTitle');
+      const subtotalEl = document.getElementById('summarySubtotal');
+      const grandTotalEl = document.getElementById('summaryGrandTotal');
+      const payBtnText = document.getElementById('btnPayAmountText');
+
+      if (checkoutType === 'service') {
+        // Read service booking from localStorage
+        try {
+          const raw = localStorage.getItem('kartik_service_booking');
+          serviceBookingData = raw ? JSON.parse(raw) : null;
+        } catch(e) {
+          serviceBookingData = null;
+        }
+
+        // Fallback default service if accessed directly
+        if (!serviceBookingData) {
+          serviceBookingData = {
+            id: bookingId || 'SRV-894218',
+            serviceId: 'calibration',
+            serviceName: 'Mechanical Movement Calibration',
+            price: 1500,
+            watchBrand: 'Seiko',
+            watchModel: 'Presage Automatic',
+            appointmentDate: 'Tomorrow',
+            timeSlot: 'Morning (10:30 AM – 1:00 PM)',
+            serviceMode: 'Mehsana Boutique Walk-in',
+            clientName: session ? session.name : 'Kartik Patel',
+            clientPhone: session ? session.phone : '98250 12345'
+          };
+        }
+
+        currentTotal = serviceBookingData.price;
+        orderTitle = serviceBookingData.serviceName;
+        orderSubtitle = `${serviceBookingData.watchBrand} ${serviceBookingData.watchModel}`;
+
+        if (serviceBookingData.clientName && !document.getElementById('payClientName').value) {
+          document.getElementById('payClientName').value = serviceBookingData.clientName;
+        }
+        if (serviceBookingData.clientPhone && !document.getElementById('payClientPhone').value) {
+          document.getElementById('payClientPhone').value = serviceBookingData.clientPhone;
+        }
+
+        headerTitle.textContent = 'Atelier Work Order';
+        container.innerHTML = `
+          <div class="order-item-row">
+            <div class="payment-item-icon-box">
+              ⚙
+            </div>
+            <div class="order-item-info">
+              <span class="order-item-title">${serviceBookingData.serviceName}</span>
+              <span class="order-item-meta">${serviceBookingData.watchBrand} • ${serviceBookingData.watchModel}</span>
+              <span class="order-item-meta color-gold">📅 ${serviceBookingData.appointmentDate} (${serviceBookingData.timeSlot})</span>
+              <span class="order-item-meta color-steel">Mode: ${serviceBookingData.serviceMode}</span>
+            </div>
+            <div class="order-item-price">
+              ${serviceBookingData.price > 0 ? `₹${serviceBookingData.price.toLocaleString('en-IN')}` : 'FREE'}
+            </div>
+          </div>
+        `;
+      } else {
+        // Render Cart items
+        headerTitle.textContent = 'Cart Order Summary';
+        const cart = (typeof KartikCart !== 'undefined') ? KartikCart.getCart() : [];
+        const cartTotal = (typeof KartikCart !== 'undefined') ? KartikCart.getTotal() : 0;
+
+        if (!cart.length) {
+          currentTotal = 24500;
+          orderTitle = 'Seiko Presage Cocktail Time';
+          container.innerHTML = `
+            <div class="order-item-row">
+              <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=300" class="order-item-thumbnail" alt="Timepiece">
+              <div class="order-item-info">
+                <span class="order-item-title">Seiko Presage Cocktail Time</span>
+                <span class="order-item-meta">Qty: 1 • Automatic Movement</span>
+              </div>
+              <div class="order-item-price">₹24,500</div>
+            </div>
+          `;
+        } else {
+          currentTotal = cartTotal;
+          orderTitle = cart.map(i => i.name).join(', ');
+          container.innerHTML = cart.map(item => `
+            <div class="order-item-row">
+              <img src="${item.image}" class="order-item-thumbnail" alt="${item.name}">
+              <div class="order-item-info">
+                <span class="order-item-title">${item.name}</span>
+                <span class="order-item-meta">Qty: ${item.qty} • ${item.badge}</span>
+              </div>
+              <div class="order-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
+            </div>
+          `).join('');
+        }
+      }
+
+      // Update calculations
+      subtotalEl.textContent = `₹${currentTotal.toLocaleString('en-IN')}`;
+      grandTotalEl.textContent = `₹${currentTotal.toLocaleString('en-IN')}`;
+      payBtnText.textContent = `Authorize & Pay ₹${currentTotal.toLocaleString('en-IN')}`;
+
+      // 3. Payment Method Tabs Switching
+      const tabs = document.querySelectorAll('.payment-tab-btn');
+      const panels = document.querySelectorAll('.payment-tab-content');
+      let currentPaymentMethod = 'UPI / QR Code';
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => {
+            t.classList.remove('is-active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          panels.forEach(p => p.classList.remove('is-active'));
+
+          tab.classList.add('is-active');
+          tab.setAttribute('aria-selected', 'true');
+          const target = tab.dataset.target;
+          document.getElementById(target).classList.add('is-active');
+
+          if (tab.id === 'tabUpi') currentPaymentMethod = 'UPI / QR Code';
+          else if (tab.id === 'tabCard') currentPaymentMethod = 'Credit / Debit Card';
+          else if (tab.id === 'tabNetbanking') currentPaymentMethod = 'Net Banking';
+          else if (tab.id === 'tabStore') currentPaymentMethod = 'Boutique Store Pay';
+        });
+      });
+
+      // Copy UPI ID button
+      const btnCopyUpi = document.getElementById('btnCopyUpi');
+      if (btnCopyUpi) {
+        btnCopyUpi.addEventListener('click', () => {
+          const upiId = document.getElementById('merchantUpiId').textContent;
+          navigator.clipboard.writeText(upiId).then(() => {
+            btnCopyUpi.textContent = 'Copied!';
+            setTimeout(() => { btnCopyUpi.textContent = 'Copy UPI ID'; }, 2000);
+          });
+        });
+      }
+
+      // Live Credit Card Input Formatting
+      const cardNumberInput = document.getElementById('cardNumberInput');
+      const cardHolderInput = document.getElementById('cardHolderInput');
+      const cardExpiryInput = document.getElementById('cardExpiryInput');
+      const previewCardNumber = document.getElementById('previewCardNumber');
+      const previewCardName = document.getElementById('previewCardName');
+      const previewCardExpiry = document.getElementById('previewCardExpiry');
+      const cardNetworkLabel = document.getElementById('cardNetworkLabel');
+
+      if (cardNumberInput) {
+        cardNumberInput.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/\D/g, '').substring(0, 16);
+          let formatted = val.match(/.{1,4}/g)?.join(' ') || '';
+          e.target.value = formatted;
+          previewCardNumber.textContent = formatted || '•••• •••• •••• 4242';
+
+          if (val.startsWith('4')) cardNetworkLabel.textContent = 'VISA';
+          else if (val.startsWith('5')) cardNetworkLabel.textContent = 'MASTERCARD';
+          else if (val.startsWith('6')) cardNetworkLabel.textContent = 'RUPAY';
+          else if (val.startsWith('3')) cardNetworkLabel.textContent = 'AMEX';
+          else cardNetworkLabel.textContent = 'HAUTE CARTE';
+        });
+      }
+
+      if (cardHolderInput) {
+        cardHolderInput.addEventListener('input', (e) => {
+          previewCardName.textContent = e.target.value.toUpperCase() || 'KARTIK PATEL';
+        });
+      }
+
+      if (cardExpiryInput) {
+        cardExpiryInput.addEventListener('input', (e) => {
+          let val = e.target.value.replace(/\D/g, '').substring(0, 4);
+          if (val.length >= 2) val = val.substring(0, 2) + '/' + val.substring(2);
+          e.target.value = val;
+          previewCardExpiry.textContent = val || '12/28';
+        });
+      }
+
+      // Net banking bank selection
+      const bankTiles = document.querySelectorAll('.bank-tile-btn');
+      bankTiles.forEach(tile => {
+        tile.addEventListener('click', () => {
+          bankTiles.forEach(b => b.classList.remove('is-selected'));
+          tile.classList.add('is-selected');
+        });
+      });
+
+      // 4. Complete Payment Processing Flow
+      const btnPay = document.getElementById('btnCompletePayment');
+      const processingModal = document.getElementById('paymentProcessingModal');
+      const processingStepText = document.getElementById('processingStepText');
+      const receiptModal = document.getElementById('receiptModal');
+
+      btnPay.addEventListener('click', () => {
+        const clientName = document.getElementById('payClientName').value.trim();
+        const clientPhone = document.getElementById('payClientPhone').value.trim();
+
+        if (!clientName) {
+          alert('Please enter your full legal name.');
+          document.getElementById('payClientName').focus();
+          return;
+        }
+
+        if (!clientPhone || clientPhone.length < 8) {
+          alert('Please enter a valid mobile number for WhatsApp order updates.');
+          document.getElementById('payClientPhone').focus();
+          return;
+        }
+
+        // Show Processing Overlay
+        processingModal.classList.add('is-active');
+
+        // Step 1: Connecting
+        processingStepText.textContent = 'Connecting to Secure Banking Gateway (256-Bit SSL)...';
+
+        // Prepare database persistence payload
+        let dbPromise = null;
+        let generatedRef = 'KWS-' + (checkoutType === 'service' ? 'SRV' : 'ORD') + '-' + Math.floor(100000 + Math.random() * 900000);
+
+        if (checkoutType === 'cart') {
+          const cartItems = (typeof KartikCart !== 'undefined') ? KartikCart.getCart() : [];
+          dbPromise = fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              client_name: clientName,
+              client_email: clientEmail,
+              client_phone: clientPhone,
+              payment_method: currentPaymentMethod,
+              total_amount: currentTotal,
+              items: cartItems
+            })
+          }).then(res => res.json()).catch(err => {
+            console.log('Database sync notice (offline / file protocol fallback):', err);
+            return null;
+          });
+        } else if (checkoutType === 'service') {
+          const rawBooking = localStorage.getItem('kartik_service_booking');
+          const bookingData = rawBooking ? JSON.parse(rawBooking) : {};
+          dbPromise = fetch('/api/services', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              client_name: clientName,
+              client_phone: clientPhone,
+              client_email: clientEmail,
+              service_id: bookingData.serviceId || 'general-service',
+              service_name: bookingData.serviceName || orderTitle,
+              service_price: currentTotal,
+              watch_brand: bookingData.watchBrand || 'Luxury Watch',
+              watch_model: bookingData.watchModel || 'Client Reference',
+              appointment_date: bookingData.appointmentDate || new Date().toISOString().split('T')[0],
+              appointment_slot: bookingData.timeSlot || '11:00 AM - 01:00 PM',
+              delivery_mode: bookingData.serviceMode || 'Mehsana Boutique Walk-in'
+            })
+          }).then(res => res.json()).catch(err => {
+            console.log('Database sync notice (offline / file protocol fallback):', err);
+            return null;
+          });
+        }
+
+        setTimeout(() => {
+          // Step 2: Authorizing
+          processingStepText.textContent = `Authorizing ₹${currentTotal.toLocaleString('en-IN')} via ${currentPaymentMethod}...`;
+        }, 600);
+
+        setTimeout(() => {
+          // Step 3: Work order registration
+          processingStepText.textContent = 'Registering Mehsana Atelier Work Order & Committing to Database...';
+        }, 1200);
+
+        setTimeout(async () => {
+          // Finish & Show Receipt
+          processingModal.classList.remove('is-active');
+
+          if (dbPromise) {
+            try {
+              const apiResult = await dbPromise;
+              if (apiResult && apiResult.success) {
+                generatedRef = apiResult.order_number || apiResult.booking_reference || generatedRef;
+              }
+            } catch (e) {
+              console.log('API fallback activated');
+            }
+          }
+
+          document.getElementById('receiptOrderNumber').textContent = `WORK ORDER: ${generatedRef}`;
+          document.getElementById('receiptClientName').textContent = clientName;
+          document.getElementById('receiptPaymentMode').textContent = `${currentPaymentMethod} (Verified)`;
+          document.getElementById('receiptItemTitle').textContent = orderTitle;
+          document.getElementById('receiptTotalAmount').textContent = `₹${currentTotal.toLocaleString('en-IN')}`;
+          
+          const now = new Date();
+          document.getElementById('receiptDate').textContent = `${now.toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' })} • ${now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}`;
+
+          receiptModal.classList.add('is-active');
+
+          // Clear cart if this was a cart purchase
+          if (checkoutType === 'cart' && typeof KartikCart !== 'undefined') {
+            KartikCart.clearCart();
+          }
+        }, 1800);
+      });
+
+      // Print Receipt
+      const btnPrintReceipt = document.getElementById('btnPrintReceipt');
+      if (btnPrintReceipt) {
+        btnPrintReceipt.addEventListener('click', () => {
+          window.print();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

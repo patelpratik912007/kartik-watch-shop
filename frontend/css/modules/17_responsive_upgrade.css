@@ -1,0 +1,89 @@
+/* Final responsive overrides for the light luxury experience. */
+:root { --page-gutter: clamp(1rem, 3vw, 1.5rem); }
+html { scroll-padding-top: 5.5rem; }
+body.nav-open { overflow: hidden; }
+.container { padding-inline: var(--page-gutter); }
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid rgba(175, 134, 61, 0.62);
+  outline-offset: 3px;
+}
+
+.nav { min-height: 72px; }
+.nav-container { min-height: 54px; }
+.nav-scrim { display: none; }
+.nav-icon-link { min-width: 44px; min-height: 44px; }
+
+.card-image-wrap { background: #f4f0e9; }
+.card-pedestal-light { background: radial-gradient(circle at 50% 45%, rgba(197, 160, 89, 0.14), rgba(245, 241, 234, 0.88) 72%); }
+.card-img { object-fit: cover; object-position: center; }
+.card-body { padding: clamp(1rem, 2vw, 1.4rem); }
+.card-title { font-size: clamp(1.08rem, 2vw, 1.28rem); }
+.card-desc { min-height: 2.75rem; }
+.card-amz-actions button, .card-amz-actions a { min-height: 44px; }
+
+.gallery-main { background: #f4f0e9; }
+.product-main-img { object-fit: contain; padding: clamp(0.75rem, 2vw, 1.5rem); }
+.product-gallery-caption {
+  display: flex; justify-content: space-between; gap: 1rem; margin-top: 0.8rem;
+  color: var(--steel); font: 500 0.73rem/1.4 var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase;
+}
+.product-gallery-caption span:last-child { text-align: right; }
+
+@media (max-width: 900px) {
+  .product-layout { grid-template-columns: minmax(0, 1fr); }
+  .product-gallery, .cart-summary-col { position: static; }
+  .cart-layout { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav { min-height: 64px; padding: 0.45rem 0; }
+  .nav-container { min-height: 48px; }
+  .nav-toggle { position: relative; z-index: 1003; display: inline-flex; width: 46px; height: 46px; background: #fff; }
+  .nav-dot, .hamburger-bar { background-color: var(--navy); }
+  .nav-scrim { position: fixed; inset: 0; z-index: 1001; width: 100%; height: 100%; border: 0; background: rgba(15, 26, 46, 0.38); cursor: default; }
+  .nav-scrim.is-visible { display: block; }
+  .nav-menu { z-index: 1002; width: min(340px, calc(100vw - 1.25rem)); padding: 1.25rem 1rem calc(1.5rem + env(safe-area-inset-bottom)); background: #fdfbf7; }
+  .nav-menu .drawer-header { margin-bottom: 1rem !important; }
+  .nav-icon-menu .nav-list { gap: 0.25rem; }
+  .nav-icon-link { min-height: 48px; padding: 0.78rem 0.9rem; color: var(--navy); }
+  .nav-icon-link:hover, .nav-icon-link.nav-active { background: rgba(197, 160, 89, 0.14); }
+  .nav-icon-link .nav-icon-svg { color: var(--gold-bright); }
+  .nav-icon-menu .btn-nav { min-height: 48px; }
+  .hero { padding-top: clamp(4.5rem, 11vw, 6rem); }
+  .hero-stats { width: 100%; }
+  .brands-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); justify-content: stretch; }
+  .brand-card { min-width: 0; }
+  .product-gallery-caption { font-size: 0.67rem; }
+  .product-assurances { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 540px) {
+  .hero-badge { max-width: 100%; font-size: 0.64rem; letter-spacing: 0.05em; }
+  .hero-stats { gap: 0.75rem; }
+  .stat-item { min-width: 0; }
+  .stat-label { font-size: 0.67rem; }
+  .filter-control-panel { padding: 1rem; }
+  .gender-filter-tabs { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .filter-tab { min-height: 44px; padding-inline: 0.35rem; }
+  .card-desc { min-height: 0; }
+  .card-amz-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .btn-add-cart, .btn-buy-now { font-size: 0.72rem; white-space: normal; }
+  .product-assurances { grid-template-columns: 1fr; }
+  .product-gallery-caption { align-items: flex-start; flex-direction: column; gap: 0.25rem; }
+  .product-gallery-caption span:last-child { text-align: left; }
+}
+
+@media (max-width: 380px) {
+  .brand-symbol { width: 30px; height: 30px; }
+  .brand-title { font-size: 1rem; }
+  .nav-menu { width: 100vw; }
+  .brands-grid { gap: 0.45rem; }
+  .brand-card { padding: 0.8rem 0.35rem; }
+  .card-amz-actions { grid-template-columns: 1fr; }
+}
+
+@media (hover: none) {
+  .collection-card:hover, .brand-card:hover, .btn:hover { transform: none; }
+  .collection-card:hover .card-img { transform: none; }
+}

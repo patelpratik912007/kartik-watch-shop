@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kartik Watch Shop Mehsana - Concierge Member Portal. Secure Sign In and Account Registration with Email, Phone, and Password Verification.">
+  <title>Concierge Portal | Kartik Watch Shop Mehsana</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Cart & Shared Nav -->
+  <script src="js/cart.js" defer></script>
+  <script src="js/shared-nav.js" defer></script>
+  <!-- Scripts -->
+  <script src="js/auth.js" defer></script>
+</head>
+<body class="auth-body">
+
+  <!-- Background Ambience -->
+  <div class="auth-ambient-glow"></div>
+
+  <!-- Header / Brand Nav -->
+  <header class="auth-header">
+    <div class="container auth-header-container">
+      <a href="index.html" class="brand" aria-label="Return to Kartik Watch Shop Home">
+        <svg class="brand-symbol" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2"/>
+          <circle cx="16" cy="16" r="10" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+          <line x1="16" y1="16" x2="16" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="16" y1="16" x2="22" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2" fill="currentColor"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-title">KARTIK</span>
+          <span class="brand-sub">MEHSANA &bull; EST. 1998</span>
+        </div>
+      </a>
+
+      <a href="index.html" class="btn btn-secondary btn-return">
+        &larr; Return to Boutique
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Auth Container -->
+  <main class="auth-main">
+    <div class="container auth-container">
+      <div class="auth-card">
+        
+        <!-- Auth Card Header -->
+        <div class="auth-card-header">
+          <span class="section-subtitle">HAUTE HOROLOGY CONCIERGE</span>
+          <h1 class="auth-title">Member Access</h1>
+          <p class="auth-subtitle">
+            Sign in to track custom orders, reserve luxury timepieces, and access VIP Mehsana horology services.
+          </p>
+        </div>
+
+        <!-- Auth Tabs (Sign In / Register) -->
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" id="tabLogin" role="tab" aria-selected="true">
+            Member Sign In
+          </button>
+          <button class="auth-tab" id="tabSignup" role="tab" aria-selected="false">
+            Create Account
+          </button>
+        </div>
+
+        <!-- 1. LOGIN VIEW -->
+        <div class="auth-view" id="loginView">
+
+          <!-- Google Social Authentication -->
+          <div class="social-auth-container">
+            <button type="button" class="btn-google-auth google-auth-trigger" id="loginGoogleBtn" title="Sign in with your Google Account">
+              <svg class="google-g-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.15z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.36 7.34 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.15 0 9.92 0 12s.45 3.85 1.24 5.42l4.04-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+              <span>Continue with Google Account</span>
+            </button>
+            <div class="social-auth-divider">
+              <span>Or Continue With Concierge ID</span>
+            </div>
+          </div>
+
+          <form id="loginForm" class="auth-form" novalidate>
+            
+            <div class="form-group">
+              <label for="loginIdentifier" class="form-label">Email Address or Mobile Number</label>
+              <div class="input-wrapper">
+                <input 
+                  type="text" 
+                  id="loginIdentifier" 
+                  class="form-input" 
+                  placeholder="name@domain.com or 98250 12345" 
+                  required 
+                  autocomplete="username"
+                >
+              </div>
+              <span class="form-error" id="loginIdentifierError"></span>
+            </div>
+
+            <div class="form-group">
+              <div class="label-row">
+                <label for="loginPassword" class="form-label">Password</label>
+              </div>
+              <div class="input-wrapper">
+                <input 
+                  type="password" 
+                  id="loginPassword" 
+                  class="form-input" 
+                  placeholder="Enter your account password" 
+                  required 
+                  autocomplete="current-password"
+                >
+                <button type="button" class="btn-toggle-password" aria-label="Toggle password visibility">Show</button>
+              </div>
+              <span class="form-error" id="loginPasswordError"></span>
+            </div>
+
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" id="rememberMe" checked>
+                <span>Remember this device</span>
+              </label>
+              <a href="#visit" class="forgot-link">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-auth-submit">
+              Enter Concierge Portal &rarr;
+            </button>
+          </form>
+
+          <!-- Demo Quick Fill Box -->
+          <div class="demo-auth-box">
+            <div class="demo-badge">QUICK DEMO ACCESS</div>
+            <p class="demo-desc">Want to test without registering? Auto-fill our verified collector account or test Google sign-in:</p>
+            <button type="button" id="quickDemoBtn" class="btn btn-secondary btn-sm btn-block">
+              Auto-Fill Verified Demo Account
+            </button>
+            <button type="button" id="quickGoogleDemoBtn" class="btn btn-secondary btn-sm btn-block btn-quick-google">
+              Instant Verified Google Account Access
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. SIGNUP VIEW -->
+        <div class="auth-view" id="signupView">
+
+          <!-- Google Social Authentication -->
+          <div class="social-auth-container">
+            <button type="button" class="btn-google-auth google-auth-trigger" id="signupGoogleBtn" title="Register instantly with your Google Account">
+              <svg class="google-g-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.15z"/>
+                <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.24v3.15C3.26 21.36 7.34 24 12 24z"/>
+                <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.24C.45 8.15 0 9.92 0 12s.45 3.85 1.24 5.42l4.04-3.15z"/>
+                <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.34 0 3.26 2.64 1.24 6.58l4.04 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+              </svg>
+              <span>Sign Up with Google Account</span>
+            </button>
+            <div class="social-auth-divider">
+              <span>Or Register With Email &amp; Phone</span>
+            </div>
+          </div>
+
+          <form id="signupForm" class="auth-form" novalidate>
+            
+            <div class="form-group">
+              <label for="signupName" class="form-label">Full Legal Name</label>
+              <div class="input-wrapper">
+                <input 
+                  type="text" 
+                  id="signupName" 
+                  class="form-input" 
+                  placeholder="e.g. Karan Patel" 
+                  required 
+                  autocomplete="name"
+                >
+              </div>
+              <span class="form-error" id="signupNameError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signupEmail" class="form-label">Email Address (for Verification)</label>
+              <div class="input-wrapper">
+                <input 
+                  type="email" 
+                  id="signupEmail" 
+                  class="form-input" 
+                  placeholder="e.g. karan.patel@gmail.com" 
+                  required 
+                  autocomplete="email"
+                >
+              </div>
+              <span class="form-error" id="signupEmailError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signupPhone" class="form-label">Mobile Number (for SMS OTP Verification)</label>
+              <div class="input-wrapper phone-input-wrapper">
+                <span class="country-code-badge">+91 (IN)</span>
+                <input 
+                  type="tel" 
+                  id="signupPhone" 
+                  class="form-input phone-input" 
+                  placeholder="98250 12345" 
+                  maxlength="14"
+                  required 
+                  autocomplete="tel"
+                >
+              </div>
+              <span class="form-error" id="signupPhoneError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signupPassword" class="form-label">Create Password</label>
+              <div class="input-wrapper">
+                <input 
+                  type="password" 
+                  id="signupPassword" 
+                  class="form-input" 
+                  placeholder="Minimum 8 chars with symbols & numbers" 
+                  required 
+                  autocomplete="new-password"
+                >
+                <button type="button" class="btn-toggle-password" aria-label="Toggle password visibility">Show</button>
+              </div>
+              
+              <!-- Password Strength Meter -->
+              <div class="password-strength-container">
+                <div class="strength-bar-bg">
+                  <div class="strength-bar-fill" id="strengthBarFill"></div>
+                </div>
+                <span class="strength-text" id="strengthText"></span>
+              </div>
+              <span class="form-error" id="signupPasswordError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+              <div class="input-wrapper">
+                <input 
+                  type="password" 
+                  id="signupConfirmPassword" 
+                  class="form-input" 
+                  placeholder="Re-enter your password" 
+                  required 
+                  autocomplete="new-password"
+                >
+                <button type="button" class="btn-toggle-password" aria-label="Toggle password visibility">Show</button>
+              </div>
+              <span class="form-error" id="signupConfirmPasswordError"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-auth-submit">
+              Proceed to Verification &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 3. OTP VERIFICATION MODAL -->
+  <div class="auth-modal" id="otpModal">
+    <div class="auth-modal-backdrop"></div>
+    <div class="auth-modal-dialog">
+      
+      <div class="modal-badge">
+        <span class="badge-dot"></span>
+        <span>TWO-FACTOR AUTHENTICATION</span>
+      </div>
+
+      <h2 class="modal-title">Verify Your Account</h2>
+      <p class="modal-desc" id="otpTargetText">
+        Verification codes sent to your registered email and mobile number.
+      </p>
+
+      <div class="otp-input-grid">
+        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]" inputmode="numeric" autofocus>
+        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+        <input type="text" class="otp-box" maxlength="1" pattern="[0-9]" inputmode="numeric">
+      </div>
+
+      <div class="otp-timer-row">
+        <span>Resend code in: <strong id="otpTimer">00:60</strong></span>
+        <button type="button" id="btnResendOtp" class="btn-link" disabled>Resend Code</button>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="btnVerifyOtp" class="btn btn-primary btn-block">
+          Complete Verification &amp; Enter Boutique
+        </button>
+        <button type="button" id="btnCancelOtp" class="btn btn-secondary btn-block u-mt-xs">
+          Cancel &amp; Edit Details
+        </button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

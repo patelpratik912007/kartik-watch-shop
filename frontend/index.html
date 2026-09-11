@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kartik Watch Shop Mehsana — Luxury Timepieces, Seiko, Citizen, Tissot, Repairs & Servicing.">
+  <title>Kartik Watch Shop — Mehsana | Luxury Timepieces</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Shared Icon Navbar (injected by shared-nav.js) -->
+  <script src="js/cart.js" defer></script>
+  <script src="js/shared-nav.js" defer></script>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="top">
+    <div class="hero-backdrop-image"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-grid">
+
+      <!-- Left: Copy -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>⚜ Mehsana's Superlative Horology Destination &bull; Est. 1998</span>
+        </div>
+        <h1 class="hero-title">Timeless Precision,<br><em>Crafted for Eternity.</em></h1>
+        <p class="hero-subcopy">
+          Explore iconic Swiss &amp; Japanese timepieces from Seiko, Citizen, Tissot, Hamilton, and Casio & G-Shock. Certified luxury horology and master atelier restoration.
+        </p>
+        <div class="hero-actions">
+          <a href="collections.html" class="btn btn-primary">Discover Collection</a>
+          <a href="services.html" class="btn btn-secondary">Horology Services</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-num">25+</span>
+            <span class="stat-label">Years in Mehsana</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">12,500+</span>
+            <span class="stat-label">Happy Wearers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">31</span>
+            <span class="stat-label">Curated Pieces</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: CSS Analog Clock -->
+      <div class="hero-clock-wrapper">
+        <div class="clock-case animated-float" aria-label="Live Real-time Horology Clock Display">
+          <div class="clock-bezel"></div>
+          <div class="clock-face">
+            <div class="clock-ticks-mask"></div>
+            <div class="clock-numbers">
+              <span class="num num-12">XII</span>
+              <span class="num num-3">III</span>
+              <span class="num num-6">VI</span>
+              <span class="num num-9">IX</span>
+            </div>
+            <div class="clock-brand">
+              <span class="clock-brand-title">KARTIK</span>
+              <span class="clock-brand-sub">MEHSANA</span>
+            </div>
+            <div class="hand hour-hand" id="hourHand"></div>
+            <div class="hand minute-hand" id="minuteHand"></div>
+            <div class="hand second-hand" id="secondHand"></div>
+            <div class="clock-pin"></div>
+            <div class="clock-glass-reflection"></div>
+          </div>
+        </div>
+        <div class="clock-status">
+          <span class="live-indicator"></span>
+          <span>LIVE SHOP TIME &bull; MEHSANA, GUJARAT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ══════════ FEATURED BRANDS ═══════════ -->
+  <section class="brands-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle rolex-subtitle">⚜ SHOP BY BRAND</span>
+        <h2 class="section-title">World-Class <em>Timepiece Brands</em></h2>
+      </div>
+      <div class="brands-grid">
+        <a href="collections.html?brand=seiko" class="brand-card">
+          <div class="brand-logo-ring">
+            <span class="brand-icon-text">S</span>
+          </div>
+          <span class="brand-card-name">Seiko</span>
+        </a>
+        <a href="collections.html?brand=citizen" class="brand-card">
+          <div class="brand-logo-ring">
+            <span class="brand-icon-text">C</span>
+          </div>
+          <span class="brand-card-name">Citizen</span>
+        </a>
+        <a href="collections.html?brand=tissot" class="brand-card">
+          <div class="brand-logo-ring">
+            <span class="brand-icon-text">T</span>
+          </div>
+          <span class="brand-card-name">Tissot</span>
+        </a>
+        <a href="collections.html?brand=casio" class="brand-card">
+          <div class="brand-logo-ring">
+            <span class="brand-icon-text">G</span>
+          </div>
+          <span class="brand-card-name">Casio &amp; G-Shock</span>
+        </a>
+        <a href="collections.html?brand=hamilton" class="brand-card">
+          <div class="brand-logo-ring">
+            <span class="brand-icon-text">H</span>
+          </div>
+          <span class="brand-card-name">Hamilton</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FEATURED WATCHES (AMAZON LUXURY CARDS) ═══════════ -->
+  <section class="collections" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle rolex-subtitle">⚜ HAUTE HOROLOGY PICKS</span>
+        <h2 class="section-title">Featured <em>Timepieces</em></h2>
+        <p class="section-description">Handpicked highlights from our full catalog of 31 superlative watches.</p>
+      </div>
+      <div class="category-grid collections-grid featured-grid" id="featuredGrid"></div>
+      <div class="u-text-center u-mt-xl">
+        <a href="collections.html" class="btn btn-primary">
+          View All 31 Timepieces &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ WHY US ═══════════ -->
+  <section class="why-us" id="about">
+    <div class="container">
+      <div class="spec-container">
+        <div class="spec-header">
+          <span class="section-subtitle">THE KARTIK BENCHMARK</span>
+          <h2 class="section-title">Mastery Spec-Sheet</h2>
+          <p class="section-description">Every timepiece passes our 28-point horology examination in Mehsana.</p>
+        </div>
+        <dl class="spec-list">
+          <div class="spec-row"><dt>Internal Movement Calibration</dt><dd>Calibrated to COSC Swiss Chronometer standards (±2 seconds per day).</dd></div>
+          <div class="spec-row"><dt>Casing &amp; Sapphire Crystal</dt><dd>Anti-reflective double-domed sapphire crystal rated 9 on the Mohs scale.</dd></div>
+          <div class="spec-row"><dt>Waterproof Certification</dt><dd>Dual-gasket pressure-tested sealing from 50m up to 300m depth rating.</dd></div>
+          <div class="spec-row"><dt>Mehsana Atelier Warranty</dt><dd>2-Year warranty covering mechanical overhaul, seals, and timing adjustment.</dd></div>
+          <div class="spec-row"><dt>Strap &amp; Bracelet Metallurgy</dt><dd>Hypoallergenic 316L surgical steel, 18k solid gold, or hand-tanned Italian leather.</dd></div>
+          <div class="spec-row"><dt>Authenticity &amp; Provenance</dt><dd>100% verified serial registration with original manufacturer documentation.</dd></div>
+        </dl>
+        <div class="u-text-center u-mt-lg">
+          <a href="services.html" class="btn btn-secondary">View All Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SELL YOUR WATCH CTA ═══════════ -->
+  <section class="sell-cta-section">
+    <div class="container">
+      <div class="sell-cta-card">
+        <div class="sell-cta-content">
+          <span class="section-subtitle">💰 SELL YOUR WATCH</span>
+          <h2 class="section-title">Want to Sell<br><em>Your Timepiece?</em></h2>
+          <p>Get the best valuation for your watch from Kartik's expert appraisers. We buy Seiko, Citizen, Tissot, Hamilton, Casio, and more.</p>
+          <a href="sell.html" class="btn btn-primary u-mt-md">Get Free Valuation</a>
+        </div>
+        <div class="sell-cta-image">
+          <img src="assets/misc/luxury_watch.png" alt="Sell your luxury watch" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TESTIMONIALS ═══════════ -->
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">CLIENT EXPERIENCE</span>
+        <h2 class="section-title">Words from Connoisseurs</h2>
+      </div>
+      <div class="testimonials-grid">
+        <blockquote class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Kartik Watch Shop restored my father's vintage Seiko automatic. The movement calibration is absolutely world class!"</p>
+          <footer class="reviewer">
+            <div class="reviewer-avatar">PP</div>
+            <div class="reviewer-info"><cite class="reviewer-name">Patel Paramesh</cite><span class="reviewer-meta">Mehsana Collector</span></div>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Exceptional boutique experience! Bought a Hamilton Khaki and had it laser engraved. Flawless craftsmanship."</p>
+          <footer class="reviewer">
+            <div class="reviewer-avatar">KP</div>
+            <div class="reviewer-info"><cite class="reviewer-name">Karan Patel</cite><span class="reviewer-meta">Verified Collector</span></div>
+          </footer>
+        </blockquote>
+        <blockquote class="testimonial-card">
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="review-text">"Best watch store in Mehsana for authentic Tissot &amp; Seiko. Quick battery replacement and pressure test on the spot!"</p>
+          <footer class="reviewer">
+            <div class="reviewer-avatar">MS</div>
+            <div class="reviewer-info"><cite class="reviewer-name">Mehul Shah</cite><span class="reviewer-meta">Verified Customer</span></div>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="brand">
+            <svg class="brand-symbol" viewBox="0 0 40 40" width="36" height="36" aria-hidden="true" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="20" cy="20" r="19" stroke="url(#kGoldF)" stroke-width="1.5"/>
+              <rect x="17.5" y="0.5" width="5" height="3" rx="1" fill="url(#kGoldF)"/>
+              <circle cx="20" cy="20" r="15.5" stroke="url(#kGoldF)" stroke-width="0.8" stroke-dasharray="1.2 2"/>
+              <rect x="19.3" y="5.5" width="1.4" height="3" rx="0.4" fill="url(#kGoldF)"/>
+              <rect x="31.5" y="19.3" width="3" height="1.4" rx="0.4" fill="url(#kGoldF)"/>
+              <rect x="19.3" y="31.5" width="1.4" height="3" rx="0.4" fill="url(#kGoldF)"/>
+              <rect x="5.5" y="19.3" width="3" height="1.4" rx="0.4" fill="url(#kGoldF)"/>
+              <text x="20" y="25.5" font-family="Georgia,serif" font-size="15" font-weight="700" fill="url(#kGoldF)" text-anchor="middle" letter-spacing="-1">K</text>
+              <defs>
+                <linearGradient id="kGoldF" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#F3E0B5"/>
+                  <stop offset="40%" stop-color="#DFBA73"/>
+                  <stop offset="70%" stop-color="#C5A059"/>
+                  <stop offset="100%" stop-color="#8F6F33"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="brand-text">
+              <span class="brand-title">KARTIK</span>
+              <span class="brand-sub">MEHSANA &bull; EST. 1998</span>
+            </div>
+          </a>
+          <p class="footer-tagline">Mehsana's trusted horology boutique for Swiss &amp; Japanese timepieces.</p>
+        </div>
+        <div class="footer-links-grid">
+          <div class="footer-col">
+            <h4 class="footer-heading">Pages</h4>
+            <ul>
+              <li><a href="collections.html">Collections</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="sell.html">Sell a Watch</a></li>
+              <li><a href="cart.html">My Cart</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-heading">Top Brands</h4>
+            <ul>
+              <li><a href="collections.html?brand=seiko">Seiko</a></li>
+              <li><a href="collections.html?brand=citizen">Citizen</a></li>
+              <li><a href="collections.html?brand=tissot">Tissot</a></li>
+              <li><a href="collections.html?brand=casio">Casio & G-Shock</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 class="footer-heading">Mehsana Store</h4>
+            <ul>
+              <li><a href="services.html#contact">Contact Us</a></li>
+              <li><a href="services.html#location">Visit Store</a></li>
+              <li><a href="auth.html">Sign In / VIP</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> Kartik Watch Shop Mehsana. All rights reserved.</p>
+        <p class="footer-credit">Radhanpur Road, Mehsana, Gujarat 384002</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/watches-data.js" defer></script>
+  <script src="js/clock.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script>
+    // Featured watches on home (IDs: 1=Seiko Speedtimer, 6=Citizen Skyhawk, 10=Tissot PRX Chrono, 26=Hamilton Khaki Field)
+    document.addEventListener('DOMContentLoaded', () => {
+      const featured = [1, 6, 10, 26];
+      const grid = document.getElementById('featuredGrid');
+      if (!grid || typeof WATCH_CATALOG === 'undefined') return;
+
+      const watches = featured.map(id => WATCH_CATALOG.find(w => w.id === id)).filter(Boolean);
+      watches.forEach(w => {
+        const mrp = Math.round(w.price * (w.brand === 'seiko' || w.brand === 'citizen' ? 1.08 : 1.22) / 100) * 100;
+        const discount = Math.round((1 - w.price / mrp) * 100);
+        const fullStars = Math.floor(w.rating);
+        const starsHTML = '★'.repeat(fullStars);
+        const stockBadge = w.price > 200000
+          ? '<span class="stock-badge stock-low">Only 2 left</span>'
+          : '<span class="stock-badge stock-in">In Stock</span>';
+
+        const card = document.createElement('article');
+        card.className = 'collection-card rolex-style-card amz-card';
+        card.innerHTML = `
+          <a href="product.html?id=${w.id}" class="card-image-link">
+            <div class="card-image-wrap">
+              <div class="card-pedestal-light"></div>
+              <img src="${w.image}" alt="${w.name}" class="card-img" loading="lazy" decoding="async">
+              <div class="card-badge rolex-badge">${w.badge}</div>
+              <div class="card-rating-badge"><span class="star-icon">★</span> ${w.rating.toFixed(1)}</div>
+              ${stockBadge}
+            </div>
+          </a>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-tag">${w.gender === 'female' ? "Women's" : "Men's"}</span>
+              <span class="card-divider">•</span>
+              <span class="card-brand">${w.brand.charAt(0).toUpperCase() + w.brand.slice(1)}</span>
+            </div>
+            <a href="product.html?id=${w.id}" class="card-title-link"><h3 class="card-title">${w.name}</h3></a>
+            <p class="card-desc">${w.desc}</p>
+            <div class="card-rating-row">
+              <span class="stars-gold">${starsHTML}</span>
+              <span class="rating-num">(${w.rating.toFixed(1)})</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price-block">
+                <span class="price-mrp">₹${mrp.toLocaleString('en-IN')}</span>
+                <span class="price-discount">-${discount}%</span>
+                <span class="price-val">₹${w.price.toLocaleString('en-IN')}</span>
+              </div>
+            </div>
+            <div class="card-amz-actions">
+              <button class="btn-add-cart" data-id="${w.id}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Add to Cart
+              </button>
+              <a href="product.html?id=${w.id}" class="btn-buy-now">Buy Now</a>
+            </div>
+          </div>`;
+        grid.appendChild(card);
+      });
+
+      grid.querySelectorAll('.btn-add-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = parseInt(btn.dataset.id);
+          const watch = WATCH_CATALOG.find(w => w.id === id);
+          if (watch && typeof KartikCart !== 'undefined') {
+            KartikCart.addItem(watch);
+            btn.textContent = '✓ Added!';
+            setTimeout(() => { btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg> Add to Cart`; }, 2000);
+          }
+        });
+      });
+
+      // Copyright year
+      const yr = document.getElementById('year');
+      if (yr) yr.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

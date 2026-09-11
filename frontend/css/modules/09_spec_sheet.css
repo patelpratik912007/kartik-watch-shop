@@ -1,0 +1,57 @@
+﻿/* --------------------------------------------------------------------------
+   9. WATCH SPEC-SHEET SECTION
+   -------------------------------------------------------------------------- */
+.why-us {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, var(--velvet-deep) 0%, var(--ink) 100%);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.spec-container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--ink-card);
+  box-shadow: var(--shadow-dark);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  padding: 1.3rem 2rem;
+  border-bottom: 1px solid var(--line);
+  transition: background-color var(--transition-fast);
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-row:hover {
+  background-color: rgba(197, 160, 89, 0.06);
+}
+
+.spec-row dt {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gold-bright);
+  display: flex;
+  align-items: center;
+}
+
+.spec-row dd {
+  font-size: 0.94rem;
+  color: var(--ivory);
+  opacity: 0.92;
+  line-height: 1.55;
+}
+

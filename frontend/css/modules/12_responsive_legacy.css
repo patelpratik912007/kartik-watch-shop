@@ -1,0 +1,228 @@
+/* --------------------------------------------------------------------------
+   12. RESPONSIVE BREAKPOINTS & PERFORMANCE OPTIMIZATIONS
+   -------------------------------------------------------------------------- */
+
+/* Accessibility / Low-Power Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animated-float, .ticker-track, .badge-dot {
+    animation: none !important;
+  }
+
+  .collection-card, .btn, .card-img {
+    transition: none !important;
+  }
+}
+
+/* Tablet Landscape / Small Desktop: 1024px */
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 3.2rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .filter-options-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .search-group {
+    grid-column: span 2;
+  }
+
+  .btn-reset {
+    grid-column: span 2;
+  }
+
+  .collections-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  .visit-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Mobile & Tablet Portrait: 768px */
+@media (max-width: 768px) {
+  .hero {
+    padding: 3.5rem 0;
+    min-height: 0;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 13, 19, 0.98);
+    border-bottom: 1px solid var(--line-strong);
+    padding: 2rem 1.5rem;
+    transform: translateY(-150%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform var(--transition-smooth), opacity var(--transition-smooth);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+  }
+
+  @supports (backdrop-filter: blur(20px)) {
+    .nav-menu {
+      backdrop-filter: blur(20px);
+    }
+  }
+
+  .nav-menu.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .filter-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-group, .btn-reset {
+    grid-column: span 1;
+  }
+
+  .collections-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spec-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .clock-case {
+    width: 270px;
+    height: 270px;
+    padding: 10px;
+  }
+
+}
+
+/* Extra Small Mobile: < 480px */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subcopy {
+    font-size: 0.98rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-stats {
+    gap: 1.5rem;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .clock-case {
+    width: 230px;
+    height: 230px;
+  }
+
+  .filter-tab {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 0.78rem;
+    padding: 0.45rem 0.85rem;
+  }
+
+  .custom-options-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .custom-option-dial, .custom-option-case, .custom-option-strap {
+    font-size: 0.75rem;
+    padding: 0.45rem 0.65rem;
+    justify-content: center;
+  }
+
+  .summary-price-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+}
+

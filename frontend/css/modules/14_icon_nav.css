@@ -1,0 +1,122 @@
+/* ============================================================
+   ICON NAVIGATION â€” Multi-page icon-only navbar with tooltips
+   ============================================================ */
+
+.nav-icon-menu .nav-list {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.nav-icon-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.65rem;
+  border-radius: var(--radius-sm);
+  color: var(--ivory-soft);
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  cursor: pointer;
+}
+
+.nav-icon-link:hover,
+.nav-icon-link.nav-active {
+  background: rgba(197, 160, 89, 0.12);
+  color: var(--gold-bright);
+}
+
+.nav-icon-svg {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-icon-svg svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.8;
+}
+
+/* Tooltip â€” label shows on hover */
+.nav-icon-label {
+  position: absolute;
+  bottom: -2.4rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--ink-elevated);
+  color: var(--gold-bright);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(197,160,89,0.28);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 9999;
+  font-family: var(--font-body);
+}
+
+.nav-icon-link:hover .nav-icon-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Cart Badge */
+.cart-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #E63946;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 99px;
+  min-width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  font-family: var(--font-body);
+}
+
+/* Auth btn-nav in icon nav */
+.nav-icon-menu .btn-nav {
+  background: linear-gradient(135deg, var(--rolex-green), var(--rolex-green-deep));
+  color: var(--gold-bright) !important;
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.7rem;
+  margin-left: 0.4rem;
+  border: 1px solid rgba(197,160,89,0.3);
+}
+.nav-icon-menu .btn-nav:hover {
+  background: var(--rolex-green-light);
+}
+
+/* Active indicator dot */
+.nav-icon-link.nav-active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+}
+
+@media (max-width: 768px) {
+  .nav-icon-label { display: none; }
+  .nav-icon-link { padding: 0.6rem 0.8rem; }
+}
+
