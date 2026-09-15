@@ -139,8 +139,17 @@ def create_order():
                         conn.rollback()
                         return jsonify({
                             'success': False,
-                            'error': 'Order item prices cannot be negative.'
+                            'error': 'Product price cannot be negative.'
                         }), 400
+
+                    # Anti-Tampering Check: Verify against database price
+                    cursor.execute("SELECT price FROM `products` WHERE id = %s LIMIT 1", (product_id,))
+                    db_prod = cursor.fetchone()
+                    if db_prod:
+                        db_price = float(db_prod['price'] if isinstance(db_prod, dict) else db_prod[0])
+                        if price < db_price * 0.5:
+                            # Re-align with official boutique price to prevent tampering
+                            price = db_price
                     subtotal = price * qty
 
                     cursor.execute(

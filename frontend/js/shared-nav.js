@@ -210,7 +210,6 @@
                 <li><a href="cart.html">Shopping Bag &amp; Cart</a></li>
                 <li><a href="payment.html">Secure Checkout</a></li>
                 <li><a href="auth.html">VIP Concierge / Login</a></li>
-                <li><a href="/api/health" target="_blank" class="footer-health-link">⚙ API Health Check</a></li>
               </ul>
             </div>
 
@@ -260,9 +259,20 @@
     `;
   }
 
+  function loadScriptOnce(src) {
+    const existing = document.querySelector(`script[src="${src}"], script[src="./${src}"]`);
+    if (existing) return;
+    const s = document.createElement('script');
+    s.src = src;
+    s.defer = true;
+    document.body.appendChild(s);
+  }
+
   function init() {
     buildNav();
     buildFooter();
+    loadScriptOnce('js/security.js');
+    loadScriptOnce('js/owner-panel.js');
   }
 
   if (document.readyState === 'loading') {

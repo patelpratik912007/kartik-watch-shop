@@ -541,3 +541,75 @@ const WATCH_CATEGORIES = [
     desc: "Three distinctive feminine creations from the avant-garde triangular Ventura to the 1937 Art Deco Ardmore."
   }
 ];
+
+// ══════════════════════════════════════════════════════════════════
+// DYNAMIC CATALOG SYNCHRONIZATION ENGINE & OWNER API
+// ══════════════════════════════════════════════════════════════════
+(function initDynamicCatalog() {
+  function applyLocalSync() {
+    try {
+      const overrides = JSON.parse(localStorage.getItem('kartik_price_overrides') || '{}');
+      const customWatches = JSON.parse(localStorage.getItem('kartik_custom_watches') || '[]');
+      const deletedIds = new Set(JSON.parse(localStorage.getItem('kartik_deleted_watches') || '[]'));
+
+      // Apply price/discount overrides
+      WATCH_CATALOG.forEach(w => {
+        if (overrides[w.id]) {
+          Object.assign(w, overrides[w.id]);
+        }
+      });
+
+      // Filter deleted items
+      if (deletedIds.size > 0) {
+        for (let i = WATCH_CATALOG.length - 1; i >= 0; i--) {
+          if (deletedIds.has(WATCH_CATALOG[i].id)) {
+            WATCH_CATALOG.splice(i, 1);
+          }
+        }
+      }
+
+      // Add custom uploaded watches
+      customWatches.forEach(cw => {
+        const existingIdx = WATCH_CATALOG.findIndex(w => w.id === cw.id);
+        if (existingIdx >= 0) {
+          WATCH_CATALOG[existingIdx] = cw;
+        } else if (!deletedIds.has(cw.id)) {
+          WATCH_CATALOG.push(cw);
+        }
+      });
+    } catch (e) {
+      console.warn('[Catalog] Local sync note:', e);
+    }
+  }
+
+  // 1. Immediate local sync
+  applyLocalSync();
+
+  // 2. Fetch live data from backend if running
+  if (typeof fetch === 'function') {
+    fetch('/api/products')
+      .then(res => res.ok ? res.json() : null)
+      .then(data => {
+        if (data && data.success && Array.isArray(data.products) && data.products.length > 0) {
+          WATCH_CATALOG.length = 0;
+          data.products.forEach(p => WATCH_CATALOG.push(p));
+          applyLocalSync();
+          window.dispatchEvent(new CustomEvent('kartikCatalogUpdated', { detail: { source: 'api' } }));
+        }
+      })
+      .catch(() => {
+        // Backend not active, local store used seamlessly
+      });
+  }
+
+  // 3. Expose global helper API
+  window.KartikCatalog = {
+    getAll: () => WATCH_CATALOG,
+    getById: (id) => WATCH_CATALOG.find(w => w.id === Number(id)),
+    sync: () => {
+      applyLocalSync();
+      window.dispatchEvent(new CustomEvent('kartikCatalogUpdated', { detail: { source: 'manual_sync' } }));
+    }
+  };
+})();
+

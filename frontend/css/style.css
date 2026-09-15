@@ -57,3 +57,6 @@
 
 /* ── 18 · Payment Checkout, Service Booking & Google Auth ── */
 @import url('./modules/18_payment.css');
+
+/* ── 19 · Shop Owner Studio & Device Control Center ── */
+@import url('./modules/19_owner_panel.css');

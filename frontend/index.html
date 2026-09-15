@@ -293,11 +293,12 @@
   <script src="js/nav.js" defer></script>
   <script>
     // Featured watches on home (IDs: 1=Seiko Speedtimer, 6=Citizen Skyhawk, 10=Tissot PRX Chrono, 26=Hamilton Khaki Field)
-    document.addEventListener('DOMContentLoaded', () => {
+    function renderFeatured() {
       const featured = [1, 6, 10, 26];
       const grid = document.getElementById('featuredGrid');
       if (!grid || typeof WATCH_CATALOG === 'undefined') return;
 
+      grid.innerHTML = '';
       const watches = featured.map(id => WATCH_CATALOG.find(w => w.id === id)).filter(Boolean);
       watches.forEach(w => {
         const mrp = Math.round(w.price * (w.brand === 'seiko' || w.brand === 'citizen' ? 1.08 : 1.22) / 100) * 100;
@@ -331,12 +332,13 @@
             <div class="card-rating-row">
               <span class="stars-gold">${starsHTML}</span>
               <span class="rating-num">(${w.rating.toFixed(1)})</span>
+              <span class="card-spec-inline">${w.specs}</span>
             </div>
             <div class="card-price-row">
               <div class="price-block">
                 <span class="price-mrp">₹${mrp.toLocaleString('en-IN')}</span>
                 <span class="price-discount">-${discount}%</span>
-                <span class="price-val">₹${w.price.toLocaleString('en-IN')}</span>
+                <span class="price-val">₹${Number(w.price).toLocaleString('en-IN')}</span>
               </div>
             </div>
             <div class="card-amz-actions">
@@ -361,11 +363,15 @@
           }
         });
       });
+    }
 
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFeatured();
       // Copyright year
       const yr = document.getElementById('year');
       if (yr) yr.textContent = new Date().getFullYear();
     });
+    window.addEventListener('kartikCatalogUpdated', renderFeatured);
   </script>
 </body>
 </html>

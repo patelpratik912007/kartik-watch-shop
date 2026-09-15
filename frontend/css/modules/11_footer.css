@@ -106,11 +106,6 @@
   line-height: 1.7;
 }
 
-.footer-health-link {
-  color: var(--gold-bright, #DFBA73) !important;
-  font-weight: 600;
-}
-
 .footer-hours-strong {
   color: #162544;
   font-weight: 600;

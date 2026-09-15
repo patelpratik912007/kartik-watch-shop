@@ -16,9 +16,8 @@
     const hasHalf = w.rating % 1 >= 0.5;
     const starsHTML = '★'.repeat(fullStars) + (hasHalf ? '½' : '');
 
-    // Discount display (show 15–20% MRP for realism)
-    const mrpMultiplier = 1.18;
-    const mrp = Math.round(w.price * mrpMultiplier / 100) * 100;
+    // Discount display
+    const mrp = w.mrp ? Math.round(w.mrp) : Math.round(w.price * 1.18 / 100) * 100;
     const discount = Math.round((1 - w.price / mrp) * 100);
 
     // Stock badge
@@ -115,12 +114,12 @@
     attachCardEvents(grid);
   }
 
-  function renderAllCardsDirectly() {
+  function renderAllCardsDirectly(force = false) {
     const collectionsContainer = document.getElementById('dynamicCollections');
     if (!collectionsContainer || typeof WATCH_CATALOG === 'undefined') return;
 
-    // Check if already rendered
-    if (document.getElementById('unifiedGrid')) return;
+    // Check if already rendered unless forced
+    if (!force && document.getElementById('unifiedGrid')) return;
 
     collectionsContainer.innerHTML = '';
 
@@ -129,7 +128,7 @@
     grid.className = 'collections-grid collections-straight-grid';
     grid.id = 'unifiedGrid';
 
-    // Render all 31 watches directly in one straight continuous catalog
+    // Render all watches directly in one straight continuous catalog
     grid.innerHTML = WATCH_CATALOG.map(createCardHTML).join('');
     collectionsContainer.appendChild(grid);
 
@@ -147,9 +146,17 @@
     });
   });
 
+  window.addEventListener('kartikCatalogUpdated', () => {
+    renderAllCardsDirectly(true);
+    requestAnimationFrame(() => {
+      window.dispatchEvent(new CustomEvent('catalogRendered'));
+    });
+  });
+
   window.WatchRenderer = {
     renderCategoryCards: () => renderAllCardsDirectly(),
     renderAllCategoryCards: () => renderAllCardsDirectly(),
+    reRender: () => renderAllCardsDirectly(true),
     isRendered: () => !!document.getElementById('unifiedGrid')
   };
 })();

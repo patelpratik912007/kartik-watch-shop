@@ -83,3 +83,12 @@ class Config:
 
     # ── Frontend Path (for static file serving) ──
     FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend'))
+    UPLOAD_FOLDER = os.path.join(FRONTEND_DIR, 'assets', 'watches', 'uploads')
+    MAX_CONTENT_LENGTH = 5 * 1024 * 1024  # 5 MB max upload
+
+    # ══════════════════════════════════════════════════════════
+    # 9. SHOP OWNER SECURITY & DEVICE AUTHORIZATION
+    # ══════════════════════════════════════════════════════════
+    OWNER_SECRET_TOKEN = os.getenv('OWNER_SECRET_TOKEN', 'KWS-OWNER-SECURE-1998-TOKEN')
+    OWNER_PIN = os.getenv('OWNER_PIN', '1998')
+    OWNER_EMAIL = os.getenv('OWNER_EMAIL', 'admin@kartikwatches.com')

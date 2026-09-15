@@ -82,7 +82,7 @@
       document.title = `${watch.name} — Kartik Watch Shop`;
       bcName.textContent = watch.name;
 
-      const mrp = Math.round(watch.price * 1.18 / 100) * 100;
+      const mrp = watch.mrp ? Math.round(watch.mrp) : Math.round(watch.price * 1.18 / 100) * 100;
       const discount = Math.round((1 - watch.price / mrp) * 100);
       const fullStars = Math.floor(watch.rating);
       const starsHTML = '★'.repeat(fullStars) + (watch.rating % 1 >= 0.5 ? '½' : '');
@@ -90,10 +90,24 @@
       const genderLabel = watch.gender === 'female' ? "Women's" : "Men's";
       const stockText = watch.price > 80000 ? '<span class="stock-badge stock-low">Only 2 left in stock!</span>' : '<span class="stock-badge stock-in">✓ In Stock — Ready to Dispatch</span>';
 
+      const galleryImages = [
+        watch.image,
+        "assets/watches/demo/side.jpg",
+        "assets/watches/demo/back.jpg",
+        "assets/watches/demo/iso.jpg"
+      ];
+      
+      const thumbsHtml = galleryImages.map((img, idx) => 
+        `<img src="${img}" class="gallery-thumb ${idx === 0 ? 'active' : ''}" onclick="changeMainImage(this, '${img}')" alt="Angle ${idx + 1}">`
+      ).join('');
+
       layout.innerHTML = `
         <div class="product-gallery">
           <div class="gallery-main">
-            <img src="${watch.image}" alt="${watch.name} product photograph" class="product-main-img" decoding="async" fetchpriority="high">
+            <img src="${galleryImages[0]}" alt="${watch.name} product photograph" id="mainWatchImage" class="product-main-img" decoding="async" fetchpriority="high">
+          </div>
+          <div class="gallery-thumbs">
+            ${thumbsHtml}
           </div>
           <p class="product-gallery-caption"><span>Official catalogue visual</span><span>Reference #KWS-${String(watch.id).padStart(3, '0')}</span></p>
         </div>
@@ -221,6 +235,12 @@
       const input = document.getElementById('productQty');
       const val = parseInt(input.value) + delta;
       if (val >= 1 && val <= 10) input.value = val;
+    }
+
+    function changeMainImage(thumbElement, newSrc) {
+      document.getElementById('mainWatchImage').src = newSrc;
+      document.querySelectorAll('.gallery-thumb').forEach(th => th.classList.remove('active'));
+      thumbElement.classList.add('active');
     }
 
     function addToCart() {

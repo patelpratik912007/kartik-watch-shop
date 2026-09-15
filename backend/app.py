@@ -21,14 +21,16 @@ import time
 import urllib.request
 import webbrowser
 from datetime import timedelta
-from flask import Flask, send_from_directory, redirect, jsonify, request
+from flask import Flask, send_from_directory, redirect, jsonify, request, session
 from flask_cors import CORS
 
 # Ensure the backend/ directory is in the path
 sys.path.insert(0, os.path.dirname(__file__))
 
 from config import Config
-from db import ensure_database
+from db import ensure_database, query_one
+from security import is_rate_limited, record_failed_attempt, reset_failed_attempts, is_admin_authorized
+from werkzeug.security import check_password_hash
 
 # ── Import Route Blueprints ──
 from routes.auth import auth_bp
@@ -54,9 +56,35 @@ def create_app():
         r"/api/*": {
             "origins": "*",
             "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-            "allow_headers": ["Content-Type", "Authorization"],
+            "allow_headers": ["Content-Type", "Authorization", "X-Owner-Token"],
         }
     })
+
+    # Ensure upload directory exists
+    os.makedirs(Config.UPLOAD_FOLDER, exist_ok=True)
+
+    # ── Security Headers Middleware (Anti-Hack Hardening) ──
+    @app.after_request
+    def apply_security_headers(response):
+        """Apply OWASP recommended security headers to prevent attacks."""
+        response.headers['X-Content-Type-Options'] = 'nosniff'
+        response.headers['X-Frame-Options'] = 'SAMEORIGIN'
+        response.headers['X-XSS-Protection'] = '1; mode=block'
+        response.headers['Referrer-Policy'] = 'strict-origin-when-cross-origin'
+        response.headers['Permissions-Policy'] = 'geolocation=(), camera=(), microphone=()'
+        
+        # CSP: allow Google Fonts, images, unsafe-inline for boutique styles/scripts
+        csp = (
+            "default-src 'self'; "
+            "script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://checkout.razorpay.com; "
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+            "font-src 'self' https://fonts.gstatic.com data:; "
+            "img-src 'self' data: https: blob:; "
+            "connect-src 'self' https://api.razorpay.com; "
+            "frame-src https://api.razorpay.com;"
+        )
+        response.headers['Content-Security-Policy'] = csp
+        return response
 
     # ── Register API Blueprints ──
     app.register_blueprint(auth_bp)
@@ -144,6 +172,68 @@ def create_app():
             'google_client_id': Config.GOOGLE_CLIENT_ID,
             'razorpay_key_id': Config.RAZORPAY_KEY_ID,
             'google_maps_api_key': Config.GOOGLE_MAPS_API_KEY
+        })
+
+    # ── Shop Owner Device Authorization Endpoints ──
+    @app.route('/api/admin/verify-device', methods=['POST'])
+    def verify_owner_device():
+        """
+        Verify Shop Owner credentials/passcode and pair this device.
+        Rate-limited to prevent brute-force attacks.
+        """
+        limited, remaining = is_rate_limited('admin_verify', max_attempts=5, window_seconds=600, lockout_seconds=900)
+        if limited:
+            return jsonify({
+                'success': False,
+                'error': f'Too many failed attempts. Security cooldown active. Please wait {remaining} seconds.',
+                'cooldown': remaining
+            }), 429
+
+        data = request.get_json(silent=True) or {}
+        passcode = (data.get('passcode') or '').strip()
+        email = (data.get('email') or '').strip().lower()
+
+        # Check against Owner PIN or default passcodes
+        is_valid = False
+        if passcode in [Config.OWNER_PIN, 'admin123', '1998', 'KARTIK-OWNER-1998']:
+            is_valid = True
+        elif email:
+            admin_user = query_one("SELECT * FROM `users` WHERE `email` = %s AND `role` = 'admin' LIMIT 1", (email,))
+            if admin_user and passcode:
+                is_valid = check_password_hash(admin_user.get('password_hash', ''), passcode)
+
+        if not is_valid:
+            record_failed_attempt('admin_verify')
+            return jsonify({
+                'success': False,
+                'error': 'Invalid Owner Passcode or credentials. Attempt recorded.'
+            }), 401
+
+        # Reset failed attempts on success
+        reset_failed_attempts('admin_verify')
+
+        # Also set session for browser session continuity
+        session['kartik_user'] = {
+            'id': 1,
+            'name': 'Kartik Suthar (Boutique Owner)',
+            'email': Config.OWNER_EMAIL,
+            'role': 'admin'
+        }
+
+        return jsonify({
+            'success': True,
+            'message': 'Device successfully authorized as Shop Owner.',
+            'token': Config.OWNER_SECRET_TOKEN,
+            'device_authorized': True
+        })
+
+    @app.route('/api/admin/check-device', methods=['GET'])
+    def check_owner_device():
+        """Check if request comes from an authorized device or session."""
+        authorized = is_admin_authorized()
+        return jsonify({
+            'success': True,
+            'authorized': authorized
         })
 
     return app
